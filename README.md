@@ -5,7 +5,7 @@
 ![Coverage](https://img.shields.io/badge/coverage-%E2%89%A595%25-brightgreen)
 ![Dependencies](https://img.shields.io/badge/runtime%20deps-0-brightgreen)
 
-A consulting case math toolkit. Profitability, break-even, market share and sizing, pricing, M&A synergy, NPV/IRR and unit economics calculators; sensitivity, goal seek, scenario and Monte Carlo analysis that works on any of them; a MECE issue-tree checker; six fully solved practice cases; a drill mode that quizzes you with checked answers; and two web front ends (a local UI and an in-browser app on GitHub Pages). Python library and CLI, no runtime dependencies.
+A consulting case math toolkit. Profitability, break-even, market share and sizing, pricing, M&A synergy, NPV/IRR and unit economics calculators; sensitivity, goal seek, scenario and Monte Carlo analysis that works on any of them; a MECE issue-tree checker; six fully solved practice cases; a drill mode that quizzes you with checked answers; and two web front ends (a local UI and an in-browser app on GitHub Pages). Python library and CLI, no runtime dependencies. It also includes **MBA Guru Academy**, a role-based Sales & Marketing Mastery learning platform (see below).
 
 ```console
 $ mbaguru breakeven --fixed-costs 100000 --price 10 --variable-cost 6 --expected-units 40000
@@ -174,6 +174,27 @@ Bad inputs raise `mbaguru.core.ValidationError` (a `ValueError`) with the argume
 
 The reasoning behind them is in [docs/frameworks.md](docs/frameworks.md): the profitability framework, MECE thinking, break-even, share metrics, pricing, synergies, valuation, unit economics and deciding under uncertainty.
 
+## MBA Guru Academy
+
+[`academy/`](academy/index.html) is a web learning platform for the **Sales & Marketing Mastery** programme: 12 weeks, four roles, 37 modules. A learner picks a role (Product Manager, Sales Manager, Marketing or Digital Marketing). They then work through the shared 4Ps foundation (F1 to F4), their own eight-module track and the capstone.
+
+Every module has:
+
+- **Lessons:** 6 to 9 long-form lessons with worked examples in rupees, step-by-step methods, tables and an "Apply it this week" action.
+- **A narrated video lesson:** an animated 12 to 14 scene explainer of about 5 minutes. The browser's voice reads the narration, with captions, a scene timeline, a transcript, speed control and keyboard shortcuts.
+- **A Friday quiz:** five questions with explanations. The pass mark is 4 out of 5, and only the first attempt and one retake count toward certification.
+- **Practical tasks:** step checklists, a playbook deliverable, rubric self-checks, the Tuesday workshop plan and the Friday report-back prompt.
+
+The progress page holds the role-play scorecard and the capstone rubric. It combines them with quiz and task scores into the programme's weighting (15 / 40 / 15 / 30) and unlocks a printable certificate at 70%. Learners can also download every task note as one Markdown playbook. Progress stays in the browser.
+
+To run it, serve the folder and open it:
+
+```bash
+python -m http.server -d academy 8000
+```
+
+It is plain HTML, CSS and JavaScript with no build step, and it is published with the web app on GitHub Pages under `/academy/`. Module content lives in `academy/content/modules/<ID>.{lessons,video,practice}.js`. `node academy/tools/validate.js` checks every module against the schema, and `node academy/tools/smoke.js` opens all 192 pages in a headless browser.
+
 ## Project layout
 
 ```
@@ -189,6 +210,7 @@ src/mbaguru/
 ├── web/           api (JSON over the CLI), server (http.server), index.html
 └── cli.py         argparse front end
 web/               GitHub Pages app that runs the package in the browser (Pyodide)
+academy/           Sales & Marketing Mastery learning platform (lessons, video, quizzes, tasks)
 tests/             one test module per area plus an import-layering check, 498 tests
 docs/              PRD, architecture, frameworks guide, case write-ups
 ```

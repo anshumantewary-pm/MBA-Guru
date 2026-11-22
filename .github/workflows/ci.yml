@@ -149,3 +149,20 @@ jobs:
           name: dist
           path: dist/
           retention-days: 14
+
+  academy:
+    name: Academy content and smoke test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate every module's lessons, video and quiz
+        run: node academy/tools/validate.js
+      - name: Install Playwright
+        run: npm install --no-save playwright@1.48.2 && npx playwright install --with-deps chromium
+      - name: Open every page in a headless browser
+        run: node academy/tools/smoke.js
+

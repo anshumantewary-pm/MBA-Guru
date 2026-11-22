@@ -33,6 +33,8 @@ jobs:
         run: |
           mkdir -p site
           cp web/*.html site/
+          mkdir -p site/academy
+          cp -r academy/index.html academy/assets academy/content site/academy/
           cp dist/*.whl site/
           wheel=$(basename dist/*.whl)
           version=$(python -c "import mbaguru; print(mbaguru.__version__)")

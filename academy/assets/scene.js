@@ -14,16 +14,16 @@
 
   function makeCloud(r, w) {
     // Paint one cloud once into an offscreen canvas: soft puffs, lit top, warm shaded base.
-    const W = Math.round(w), H = Math.round(w * 0.42);
+    const W = Math.round(w), H = Math.round(w * 0.5), pad = 0.18;
     const c = document.createElement("canvas");
     c.width = W; c.height = H;
     const g = c.getContext("2d");
     const puffs = 7 + Math.floor(r() * 6);
     for (let pass = 0; pass < 2; pass++) {
       for (let i = 0; i < puffs; i++) {
-        const x = W * (0.12 + 0.76 * (i / (puffs - 1))) + (r() - 0.5) * W * 0.08;
-        const y = H * (0.62 - Math.sin((i / (puffs - 1)) * Math.PI) * 0.26) + (r() - 0.5) * H * 0.1;
-        const rad = H * (0.22 + r() * 0.2) * (pass ? 0.8 : 1);
+        const x = W * (pad + (1 - 2 * pad) * (i / (puffs - 1))) + (r() - 0.5) * W * 0.05;
+        const y = H * (0.6 - Math.sin((i / (puffs - 1)) * Math.PI) * 0.18) + (r() - 0.5) * H * 0.06;
+        const rad = Math.min(H * (0.16 + r() * 0.12), W * pad * 0.95, H * 0.36) * (pass ? 0.82 : 1);
         const gr = g.createRadialGradient(x, y - rad * 0.35, rad * 0.1, x, y, rad);
         if (pass === 0) { gr.addColorStop(0, "rgba(214,176,150,0.55)"); gr.addColorStop(1, "rgba(214,176,150,0)"); }
         else { gr.addColorStop(0, "rgba(255,250,240,0.95)"); gr.addColorStop(0.6, "rgba(255,238,215,0.75)"); gr.addColorStop(1, "rgba(255,238,215,0)"); }
@@ -41,6 +41,7 @@
     let W = 0, H = 0, dpr = 1, t = 0, last = 0, raf = 0, running = false, visible = true;
     let mx = 0, my = 0, tmx = 0, tmy = 0;
     let clouds = [], towers = [], blades = [], leaves = [], birds = [], motes = [], ridge1 = [], ridge2 = [];
+    let canopy = null, canopyX = 0, canopyY = 0;
 
     const sunX = () => W * (variant === "city" ? 0.42 : 0.7);
     const horizon = () => H * (variant === "city" ? 0.6 : 0.58);
@@ -66,12 +67,32 @@
       ridge2 = ridge(H * 0.03, 4.1);
       // grass blades along the foreground bank
       blades = Array.from({ length: Math.round(W / 5) }, () => ({ x: rand(0, W), h: H * rand(0.03, 0.09), lean: rand(-0.4, 0.4), ph: rand(0, TAU), tone: r() }));
-      // tree canopy clusters (left side)
-      const tx = variant === "city" ? W * 0.9 : W * 0.1, ty = H * (variant === "city" ? 0.2 : 0.14);
-      leaves = Array.from({ length: variant === "city" ? 150 : 120 }, () => {
-        const ang = rand(0, TAU), rad = Math.sqrt(r()) * W * (variant === "city" ? 0.34 : 0.2);
-        return { x: tx + Math.cos(ang) * rad * 1.25, y: ty + Math.sin(ang) * rad * 0.55, s: W * rand(0.018, 0.05) * (variant === "city" ? 1.5 : 1), tone: r(), ph: rand(0, TAU) };
-      });
+      // tree canopy: hundreds of small leaves in clusters, lit on the side facing the sun
+      const cw = W * (variant === "city" ? 0.75 : 0.46), ch = H * (variant === "city" ? 0.5 : 0.5);
+      canopy = document.createElement("canvas");
+      canopy.width = Math.round(cw * dpr); canopy.height = Math.round(ch * dpr);
+      const cg = canopy.getContext("2d");
+      cg.scale(dpr, dpr);
+      const lightFromRight = variant !== "city";
+      const clusters = Array.from({ length: 28 }, () => ({ x: cw * (0.24 + r() * 0.52), y: ch * (0.2 + r() * 0.56), rad: cw * (0.07 + r() * 0.07) }));
+      const leaf = (x, y, s2, color) => { cg.fillStyle = color; cg.beginPath(); cg.ellipse(x, y, s2, s2 * 0.62, r() * Math.PI, 0, TAU); cg.fill(); };
+      for (let pass = 0; pass < 3; pass++) {
+        for (const cl of clusters) {
+          const n = pass === 2 ? 26 : 70;
+          for (let i = 0; i < n; i++) {
+            const a = r() * TAU, d = Math.sqrt(r()) * cl.rad;
+            const x = cl.x + Math.cos(a) * d * 1.2, y = cl.y + Math.sin(a) * d * 0.8;
+            const side = lightFromRight ? (x - cl.x) / cl.rad : (cl.x - x) / cl.rad;
+            const top = (cl.y - y) / cl.rad;
+            const sz = cw * (0.006 + r() * 0.008);
+            if (pass === 0) leaf(x, y + cl.rad * 0.1, sz * 1.4, `rgba(${14 + r() * 10},${26 + r() * 14},${14 + r() * 8},0.9)`);
+            else if (pass === 1) leaf(x, y, sz, `rgba(${34 + r() * 26},${58 + r() * 30},${26 + r() * 14},0.85)`);
+            else if (side + top > 0.6) leaf(x, y, sz * 0.9, `rgba(${150 + r() * 60},${160 + r() * 40},${70 + r() * 30},${0.55 + r() * 0.3})`);
+          }
+        }
+      }
+      canopyX = variant === "city" ? W * 0.52 : -W * 0.08;
+      canopyY = variant === "city" ? -H * 0.06 : -H * 0.1;
       birds = Array.from({ length: variant === "city" ? 7 : 5 }, () => ({ x: rand(0, W), y: H * rand(0.12, 0.4), v: rand(18, 34) * (W / 1400), s: rand(5, 9) * (W / 1400 + 0.4), ph: rand(0, TAU) }));
       motes = Array.from({ length: 70 }, () => ({ x: rand(0, W), y: rand(hz * 0.6, H), r: rand(0.6, 2.2), v: rand(4, 14), ph: rand(0, TAU) }));
     }
@@ -210,8 +231,8 @@
 
     function tree() {
       const sway = Math.sin(t * 0.5) * 6 + Math.sin(t * 1.3) * 2;
-      const tx = variant === "city" ? W * 0.9 : W * 0.1;
-      const baseX = variant === "city" ? W * 0.82 : W * 0.04;
+      const tx = variant === "city" ? W * 0.86 : W * 0.12;
+      const baseX = variant === "city" ? W * 0.8 : W * 0.03;
       // trunk
       ctx.fillStyle = "#1d1810";
       ctx.beginPath();
@@ -220,12 +241,14 @@
       ctx.lineTo(tx + W * 0.02 + sway * 0.3, H * 0.18);
       ctx.bezierCurveTo(tx + W * 0.03, H * 0.5, baseX + W * 0.06, H * 0.72, baseX + W * 0.07, H);
       ctx.closePath(); ctx.fill();
-      // canopy
-      for (const l of leaves) {
-        const dx = sway * (1 - (l.y / H)) * 1.6 + Math.sin(t * 1.7 + l.ph) * 1.5 - mx * 26;
-        const lit = l.tone > 0.72;
-        ctx.fillStyle = lit ? `rgba(${120 + l.tone * 60},${140 + l.tone * 40},60,0.85)` : `rgba(${22 + l.tone * 30},${40 + l.tone * 40},${20 + l.tone * 18},0.92)`;
-        ctx.beginPath(); ctx.arc(l.x + dx, l.y - my * 8, l.s, 0, TAU); ctx.fill();
+      // canopy layer, swaying from the trunk
+      if (canopy) {
+        ctx.save();
+        const px = canopyX - mx * 26, py = canopyY - my * 8;
+        ctx.translate(px + canopy.width / dpr / 2, py + canopy.height / dpr);
+        ctx.rotate((sway / W) * 0.6);
+        ctx.drawImage(canopy, -canopy.width / dpr / 2 + sway, -canopy.height / dpr, canopy.width / dpr, canopy.height / dpr);
+        ctx.restore();
       }
     }
 

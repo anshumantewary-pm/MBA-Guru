@@ -590,3 +590,12 @@ textarea:focus, input:focus { outline: none; border-color: var(--gold); }
   body { background: #fff; color: #000; }
   .certificate { box-shadow: none; margin: 0; max-width: none; }
 }
+
+/* ---------- refinements ---------- */
+.page-head .rock { display: none; }
+@media (max-width: 600px) {
+  .sky .cloud { width: 78vw !important; height: 11vh !important; }
+  .sky .cloud:nth-of-type(odd) { left: -20vw !important; }
+  .cloudbank { height: 30%; }
+  .counter { font-size: 15px; }
+}

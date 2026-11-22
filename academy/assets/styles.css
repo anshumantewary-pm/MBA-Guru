@@ -695,7 +695,7 @@ textarea:focus, input:focus { outline: none; border-color: var(--gold); }
 @media (max-width: 640px) {
   .glassbar { grid-template-columns: repeat(2, auto); row-gap: 14px; border-radius: 22px; }
   .voices { grid-template-columns: 1fr; }
-  .voice:nth-child(1) { grid-column: auto; }
+  .voice:nth-child(n) { grid-column: auto; }
   .chip { font-size: 12px; }
   .hero2-inner { padding-top: 120px; }
 }

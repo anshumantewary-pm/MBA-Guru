@@ -96,22 +96,29 @@
     const st = S.get();
     const n = QUOTES.length;
     app.innerHTML = `
-      <section class="hero">
-        ${sky()}
-        <div class="hero-inner">
-          <div class="counter" aria-hidden="true"><span class="cur">1</span><i></i><span>${n}</span></div>
-          <h1 class="display"><span class="thin">MBA</span><span class="bold">Guru</span></h1>
-          <p class="tagline">Sales &amp; Marketing Mastery — a 12-week, role-based programme with lessons, video, quizzes and practical work on a real product.</p>
-          <div class="row-gap" style="justify-content:center;margin-top:10px">
-            <a class="pill solid" href="${st.role ? "#/role/" + st.role : "#roles"}">${st.role ? "Continue your track" : "Choose your role"}</a>
-            <a class="pill" href="#/programme">The programme</a>
+      <section class="hero2">
+        <canvas class="live" data-scene="lake" aria-hidden="true"></canvas>
+        <div class="hero2-shade"></div>
+        <div class="hero2-inner">
+          <div class="chip"><span class="stack">${C.roles.map((r) => `<i style="background:${r.hue}">${r.letter}</i>`).join("")}</span>Four role tracks · cohorts of 12 to 24</div>
+          <h1>Learn. Lead. <em>Close.</em></h1>
+          <p class="sub2">The role-based Sales &amp; Marketing programme for India, built like an MBA course pack: lessons, video, quizzes and real work on your own product.</p>
+          <div class="row-gap" style="justify-content:center">
+            <a class="btn-dark" href="${st.role ? "#/role/" + st.role : "#roles"}">${st.role ? "Continue your track" : "Choose your role"} <span aria-hidden="true">→</span></a>
+            <a class="btn-ghost" href="#/programme">See the programme</a>
           </div>
-          <a class="scroll-cue" href="#quotes" aria-label="Scroll down"></a>
         </div>
-        <div class="hero-foot">
-          <div class="links"><span class="label">12 weeks</span><span class="label hide-xs">37 modules</span><span class="label hide-xs">4 roles</span></div>
-          <div class="links"><a class="label" href="#/progress">My progress</a><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
+        <div class="glassbar" role="list">
+          <div role="listitem"><b>37</b><span>Modules</span></div>
+          <div role="listitem"><b>265</b><span>In-depth lessons</span></div>
+          <div role="listitem"><b>37</b><span>Narrated videos</span></div>
+          <div role="listitem"><b>12</b><span>Weeks to mastery</span></div>
         </div>
+      </section>
+
+      <section class="trust" aria-label="Methods and resources referenced in the curriculum">
+        <span class="label">Methods and resources referenced in the curriculum</span>
+        <div class="fade-x"><div class="marquee">${[0, 1].map((k) => `<ul ${k ? 'aria-hidden="true"' : ""}>${window.SOURCES.map((x) => `<li><span class="wm">${esc(x.name)}</span><span class="nt">${esc(x.note)}</span></li>`).join("")}</ul>`).join("")}</div></div>
       </section>
 
       <div class="dusk">
@@ -126,6 +133,28 @@
           </div>
           <div class="quote-dots" role="tablist" aria-label="Quotes">${QUOTES.map((_, i) => `<button role="tab" aria-label="Quote ${i + 1}" data-q="${i}" class="${i === 0 ? "on" : ""}"></button>`).join("")}</div>
           <a class="pill mt-l" href="#roles">Begin your track</a>
+        </section>
+
+        <section class="section" style="padding-top:40px">
+          <div class="wrap showcase reveal">
+            <div class="pic">
+              <canvas data-scene="city" aria-hidden="true"></canvas>
+              <span class="mark" aria-hidden="true"></span>
+              <div class="over"><p>Learn on Monday.<br>Close by Friday.</p><div class="meta"><span>mba guru academy</span><span>lessons ✦ video ✦ practice</span></div></div>
+            </div>
+            <div class="panel">
+              <span class="label" style="color:var(--gold)">Why it works</span>
+              <h2 class="mt-s">Transform how your team sells.</h2>
+              <p>From first interview to signed deal. Every module ends in work you do on a real product, scored on a rubric and kept in one playbook.</p>
+              <ul class="feats">
+                <li>Shared 4Ps foundation, then an eight-module track for each role</li>
+                <li>Narrated video lessons with captions and full transcripts</li>
+                <li>Friday quizzes with explanations, and a pass mark of four out of five</li>
+                <li>A capstone pitched to a panel, and a printable certificate</li>
+              </ul>
+              <a class="pill-outline" href="#roles">Start your track</a>
+            </div>
+          </div>
         </section>
 
         <section class="section" id="roles">
@@ -165,6 +194,24 @@
         </section>
 
         <section class="section">
+          <div class="wrap">
+            <div class="reveal" style="text-align:center">
+              <span class="label eyebrow">The thinking behind the work</span>
+              <h2 class="headline">What great operators say about customers.</h2>
+              <p class="lede" style="max-width:24ch;margin-inline:auto">Every idea in this programme comes back to <em>the customer</em>.</p>
+            </div>
+            <div class="voices">
+              ${window.LEADERS.map((v) => `<figure class="voice reveal" style="margin:0">
+                <a class="tag" href="#/module/${v.module}">${esc(v.theme)} · ${v.module}</a>
+                <blockquote>${esc(v.quote)}</blockquote>
+                <figcaption class="who2"><span class="mono" aria-hidden="true">${esc(v.name.split(" ").map((w) => w[0]).join(""))}</span><span><b>${esc(v.name)}</b><span>${esc(v.role)}</span></span></figcaption>
+              </figure>`).join("")}
+            </div>
+            <p class="disclaim">Published remarks, quoted for context. These leaders and their companies are not affiliated with MBA Guru and do not endorse it.</p>
+          </div>
+        </section>
+
+        <section class="section">
           <div class="wrap split">
             <div class="reveal">
               <span class="label eyebrow">How a week runs</span>
@@ -200,7 +247,7 @@
       qi = (i + n) % n;
       slides.forEach((s, k) => s.classList.toggle("on", k === qi));
       dots.forEach((d, k) => { d.classList.remove("on"); void d.offsetWidth; d.classList.toggle("on", k === qi); });
-      cur.textContent = qi + 1;
+      if (cur) cur.textContent = qi + 1;
     };
     dots.forEach((d) => d.addEventListener("click", () => { show(+d.dataset.q); restart(); }));
     let timer;
@@ -209,6 +256,10 @@
     cleanup.push(() => clearInterval(timer));
 
     app.querySelectorAll("[data-role]").forEach((a) => a.addEventListener("click", () => S.set({ role: a.dataset.role })));
+    app.querySelectorAll("canvas[data-scene]").forEach((cv, i) => {
+      const sc = window.LiveScene(cv, { variant: cv.dataset.scene, seed: 11 + i * 7 });
+      cleanup.push(() => sc.destroy());
+    });
   }
 
   /* ---------- role path ---------- */
@@ -685,6 +736,7 @@
     const [page, a, b, c] = h.split("/");
     document.querySelectorAll(".nav a").forEach((n) => n.classList.toggle("active", n.getAttribute("href") === "#/" + (page || "")));
     closeMenu();
+    document.body.classList.toggle("is-home", !page);
     if (!page) home();
     else if (page === "role") rolePage(a);
     else if (page === "module") modulePage(a, b, c);

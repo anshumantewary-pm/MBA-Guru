@@ -91,7 +91,7 @@
           }
         }
       }
-      canopyX = variant === "city" ? W * 0.52 : -W * 0.08;
+      canopyX = variant === "city" ? W * 0.52 : W < 700 ? -cw * 0.62 : -W * 0.08;
       canopyY = variant === "city" ? -H * 0.06 : -H * 0.1;
       birds = Array.from({ length: variant === "city" ? 7 : 5 }, () => ({ x: rand(0, W), y: H * rand(0.12, 0.4), v: rand(18, 34) * (W / 1400), s: rand(5, 9) * (W / 1400 + 0.4), ph: rand(0, TAU) }));
       motes = Array.from({ length: 70 }, () => ({ x: rand(0, W), y: rand(hz * 0.6, H), r: rand(0.6, 2.2), v: rand(4, 14), ph: rand(0, TAU) }));
@@ -231,8 +231,9 @@
 
     function tree() {
       const sway = Math.sin(t * 0.5) * 6 + Math.sin(t * 1.3) * 2;
-      const tx = variant === "city" ? W * 0.86 : W * 0.12;
-      const baseX = variant === "city" ? W * 0.8 : W * 0.03;
+      const narrow = variant !== "city" && W < 700;
+      const tx = variant === "city" ? W * 0.86 : narrow ? -W * 0.02 : W * 0.12;
+      const baseX = variant === "city" ? W * 0.8 : narrow ? -W * 0.1 : W * 0.03;
       // trunk
       ctx.fillStyle = "#1d1810";
       ctx.beginPath();

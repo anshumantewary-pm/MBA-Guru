@@ -283,7 +283,7 @@
     const role = roleById[S.get().role];
     const trackLabel = TRACK_NAMES[m.track];
     app.innerHTML = `${pageHead({
-      crumbs: `<a href="#/">Home</a><span>/</span>${role ? `<a href="#/role/${role.id}">Track ${role.letter}</a><span>/</span>` : ""}<span>${esc(trackLabel)}</span>`,
+      crumbs: `<a href="#/">Home</a><span>/</span>${role && role.id !== m.track ? `<a href="#/role/${role.id}">Track ${role.letter}</a><span>/</span>` : ""}${role && role.id === m.track ? `<a href="#/role/${role.id}">${esc(trackLabel)}</a>` : `<span>${esc(trackLabel)}</span>`}`,
       thin: esc(m.title),
       bold: `${m.id === "CAP" ? "Capstone" : "Module " + m.id} · ${esc(m.week)}`,
       sub: `<strong>Outcome:</strong> ${esc(m.outcome)}`

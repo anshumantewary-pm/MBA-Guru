@@ -12,6 +12,7 @@ window.SOURCES = [
   { name: "HubSpot Academy", note: "Inbound and email" },
   { name: "Meta Blueprint", note: "Paid social" },
   { name: "YouTube Creator Academy", note: "Video" },
+  { name: "University of Maryland", note: "Agile project management" },
   { name: "Coursera", note: "Further study" },
   { name: "Nasscom", note: "Industry community" },
   { name: "SaaSBoomi", note: "Founder community" }

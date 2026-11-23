@@ -110,7 +110,7 @@
         </div>
         <div class="glassbar" role="list">
           <div role="listitem"><b>37</b><span>Modules</span></div>
-          <div role="listitem"><b>265</b><span>In-depth lessons</span></div>
+          <div role="listitem"><b>268</b><span>In-depth lessons</span></div>
           <div role="listitem"><b>37</b><span>Narrated videos</span></div>
           <div role="listitem"><b>12</b><span>Weeks to mastery</span></div>
         </div>

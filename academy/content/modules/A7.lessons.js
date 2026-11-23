@@ -33,6 +33,11 @@ Academy.add("A7", "lessons", {
         "The PM goes deep on the problem and the product.",
         "Agree roles and no-go topics in a short prep call.",
         "Debrief after every joint call."
+      ],
+      selfCheck: [
+        "Who should own the opening and the next step on a joint call?",
+        "What will you agree in the 10-minute prep before your next call?",
+        "What did you learn from your last debrief?"
       ]
     },
     {
@@ -65,6 +70,11 @@ Academy.add("A7", "lessons", {
         "Keep situation questions few; research beforehand.",
         "Implication questions connect pain to money and make buyers act.",
         "Let the buyer state the value with need-payoff questions."
+      ],
+      selfCheck: [
+        "Why do implication questions matter most?",
+        "Write one need-payoff question for your top buyer problem.",
+        "How many situation questions could you skip by researching first?"
       ]
     },
     {
@@ -99,6 +109,11 @@ Academy.add("A7", "lessons", {
         "Plan three aha moments, one per discovered problem.",
         "Use demo data that looks like the buyer's.",
         "Stop early and hand back to the rep."
+      ],
+      selfCheck: [
+        "What makes a demo tailored rather than a feature tour?",
+        "What are your three aha moments, and which buyer problem does each solve?",
+        "When should you stop the demo?"
       ]
     },
     {
@@ -132,6 +147,11 @@ Academy.add("A7", "lessons", {
         "Check if an existing feature already solves the real problem.",
         "Never promise roadmap dates on a call.",
         "Log requests with the problem, frequency and deal value."
+      ],
+      selfCheck: [
+        "What is the key question to ask behind any feature request?",
+        "Why should you never promise a roadmap date on a call?",
+        "Which of your recent requests turned out to be a different problem?"
       ]
     },
     {
@@ -168,11 +188,16 @@ Academy.add("A7", "lessons", {
         "Add one technical fact that makes the outcome believable.",
         "Ask before going deeper, and match depth to the buyer's role.",
         "Offer separate technical sessions for IT reviewers."
+      ],
+      selfCheck: [
+        "Rewrite one technical feature as an outcome-first sentence.",
+        "What do owners want to hear compared with operations managers?",
+        "Could your buyer repeat your last answer to their boss in one sentence?"
       ]
     },
     {
       title: "Internal stakeholders: power-interest grid and RACI",
-      minutes: 11,
+      minutes: 15,
       summary: "Map internal stakeholders on a power-interest grid and agree a RACI for each release so nothing falls between teams.",
       blocks: [
         { type: "p", text: "PMs succeed through people they do not manage: sales, marketing, support, engineering, finance and leadership. Two simple tools make this manageable. A **power-interest grid** tells you how much attention each stakeholder needs. A **RACI** makes clear who does what for each release." },
@@ -198,6 +223,42 @@ Academy.add("A7", "lessons", {
         ] },
         { type: "callout", tone: "example", title: "Worked example", text: "Example: a Noida PM plans a new pricing tier. The CFO has high power but low interest in the details, so she gets a fortnightly 5-line WhatsApp update and approves the floor price. The sales head is high power, high interest: weekly meeting. Support is low power, high interest: kept informed through a shared plan. In the RACI, the PM is accountable for tier design, finance is accountable for GST treatment, and the sales head is accountable for the discount ladder. A disagreement about who signs off on discounts surfaces in week one, not on launch day." },
         { type: "callout", tone: "warn", title: "Common mistakes", text: "Two people marked accountable for the same task, ignoring high-power, low-interest stakeholders until they block the launch, and a RACI written once and never shared." },
+        { type: "h", text: "Going deeper: design decisions, don't just assign tasks" },
+        { type: "p", text: "A RACI says who does what. It does not say how the big cross-team decisions get made. The Agile course's advice to leaders is \"don't delegate and don't direct: design the decision space\". Most decisions should happen inside the team, story by story. A small number of **global assumptions**, the choices that affect several teams or stories, need a named owner, a basis for deciding, and a date by which they must be locked." },
+        { type: "table", head: ["Decision", "Standing assumption", "Why it matters", "Who decides, how", "Lock by"], rows: [
+          [
+            "Payment provider",
+            "Use the existing UPI partner",
+            "Cost, settlement time, risk",
+            "PM, engineering lead and finance, by consensus",
+            "Sprint 2"
+          ],
+          [
+            "Languages at launch",
+            "English and Hindi",
+            "Reach and support cost",
+            "PM, after sales input",
+            "Sprint 3"
+          ],
+          [
+            "Pricing of the new tier",
+            "₹1,499 per month",
+            "Revenue and positioning",
+            "CFO decides, PM recommends",
+            "Before beta"
+          ],
+          [
+            "Data hosting",
+            "Cloud region in India",
+            "DPDP and customer trust",
+            "Engineering lead, with legal review",
+            "Sprint 1"
+          ]
+        ] },
+        { type: "p", text: "Keep the list short. Ten to fifteen global assumptions is typical. If you have more than twenty, you are probably designing too much up front. Assumptions stay open until they must be locked, so the team keeps its options as long as it safely can." },
+        { type: "h", text: "Nudge before you negotiate" },
+        { type: "p", text: "Telling stakeholders what to do rarely works on its own. The course recommends **nudges**, small changes that make the right behaviour easy without removing choice. A simple checklist is **EAST: make it Easy, Attractive, Social and Timely**. For example, pre-fill the launch checklist so sales only has to tick boxes (easy), show which regions have already completed training (social), and send the reminder the day before the deadline (timely). If you meet resistance, you are probably pushing rather than nudging." },
+        { type: "callout", tone: "warn", title: "Watch your own bias", text: "Everyone is biased; the course's line is \"if you think you are not biased, you are\". Its four root causes are not enough memory, too much information, not enough time, and not enough meaning. Before a stakeholder decision, ask which of the four you are short of right now, and get one view from someone who disagrees with you." },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "Draw a power-interest grid for your next release and a RACI for its five main tasks. Send both to the stakeholders and ask them to correct anything wrong." }
       ],
       takeaways: [
@@ -205,11 +266,16 @@ Academy.add("A7", "lessons", {
         "RACI: responsible, accountable, consulted, informed.",
         "Exactly one accountable person per task.",
         "Share both tools early so disagreements surface before launch."
+      ],
+      selfCheck: [
+        "What is a global assumption, and who should own each one?",
+        "Why is more than twenty global assumptions a warning sign?",
+        "Design one EAST nudge for a stakeholder behaviour you need."
       ]
     },
     {
       title: "Saying no well: acknowledge, explain, offer",
-      minutes: 9,
+      minutes: 13,
       summary: "Decline requests from customers and colleagues in a way that protects the relationship and the roadmap.",
       blocks: [
         { type: "p", text: "A PM says no far more often than yes: to feature requests, custom work for one big customer, a sales head who wants a launch moved up. Saying no badly costs trust; saying yes to everything destroys focus. Saying no well uses three steps: **acknowledge, explain the trade-off, offer what you can do.**" },
@@ -232,6 +298,42 @@ Academy.add("A7", "lessons", {
           "When you cannot decide alone, name who will decide and by when."
         ] },
         { type: "callout", tone: "warn", title: "Common mistakes", text: "Hiding behind engineering, giving a vague 'maybe later' that the other person hears as yes, and saying yes on a call to avoid an awkward moment." },
+        { type: "h", text: "Going deeper: pick the right negotiation style" },
+        { type: "p", text: "Saying no is often the start of a negotiation. The **Thomas-Kilmann** model, used in the Agile course, describes five styles along two axes: how much you push for your own needs and how much you care about the other side's needs and the relationship. No style is always right. The skill is knowing your default and switching when the situation calls for it." },
+        { type: "table", head: ["Style", "Use when", "Danger"], rows: [
+          [
+            "Compete (win-lose)",
+            "No time; facing a hard bargainer; an ethical line is at stake",
+            "Burned bridges; winning a bad deal"
+          ],
+          [
+            "Avoid (lose-lose)",
+            "The issue is minor, or tempers need to cool",
+            "Problems grow while you wait"
+          ],
+          [
+            "Compromise (split it)",
+            "Urgent, with someone you trust",
+            "Giving up a must-have to look fair"
+          ],
+          [
+            "Accommodate (lose-win)",
+            "You were wrong, or the relationship matters more than this point",
+            "Being taken advantage of by a hard bargainer"
+          ],
+          [
+            "Collaborate (win-win)",
+            "Both the goal and the relationship matter, and there is time",
+            "Wasted time when the other side is not genuinely collaborating"
+          ]
+        ] },
+        { type: "p", text: "PMs tend to over-use accommodate with sales and over-use collaborate with engineering. A few rules help: prepare before any important conversation, do not accommodate someone who is competing, and be ready to compete a little on behalf of your team's focus. Most answers to scope requests should end up as \"no\" or \"not now\", and a written Won't list makes that easier to say." },
+        { type: "dialogue", title: "From accommodate to collaborate", lines: [
+          { who: "Sales head", say: "I need the custom dashboard for this client by month end. Just squeeze it in." },
+          { who: "PM", say: "I understand. This deal matters a lot to the quarter. Can you tell me what the client wants the dashboard to show their board?" },
+          { who: "Sales head", say: "Collections by region, every week." },
+          { who: "PM", say: "Our existing report has collections by region. If we schedule it as a weekly email with their logo, that is two days of work, not three weeks, and it doesn't push back the reminders release that eight other customers are waiting for. Would that work for them?" }
+        ], note: "The PM acknowledges the need, asks for the why, and offers an option that serves both goals. That is collaboration, not giving in." },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "Pick one pending request you have been avoiding. Write and send a response using acknowledge, trade-off and offer, and note how the person reacted." }
       ],
       takeaways: [
@@ -239,6 +341,11 @@ Academy.add("A7", "lessons", {
         "Use data on customers and revenue to explain trade-offs.",
         "Say clearly whether it is 'not now' or 'never'.",
         "Respond quickly and in writing."
+      ],
+      selfCheck: [
+        "What is your default negotiation style, and when does it hurt you?",
+        "Why should you not accommodate someone who is competing?",
+        "How does a written Won't list make saying no easier?"
       ]
     }
   ]

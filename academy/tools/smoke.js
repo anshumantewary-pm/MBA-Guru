@@ -21,11 +21,21 @@ const server = http.createServer((req, res) => {
   global.window = {};
   require(path.join(root, "content", "modules.js"));
   const ids = window.CATALOG_MODULES.map((m) => m.id);
-  const pages = ["#/", "#/programme", "#/progress", "#/role/product", "#/role/sales", "#/role/marketing", "#/role/digital"];
+  const pages = ["#/", "#/signup", "#/start", "#/programme", "#/progress", "#/role/product", "#/role/sales", "#/role/marketing", "#/role/digital"];
   for (const id of ids) for (const t of ["overview", "lessons", "video", "quiz", "practice"]) pages.push(`#/module/${id}/${t}`);
 
   const browser = await chromium.launch();
   const page = await browser.newPage();
+  // Signed-out visitors are sent to sign up first; check that, then sign up through the form.
+  await page.goto(base + "#/module/F1");
+  await page.waitForSelector("[data-step1]");
+  await page.fill("[name=name]", "Smoke Test");
+  await page.fill("[name=email]", "smoke@example.com");
+  await page.click("[data-step1] button[type=submit]");
+  await page.click('[data-av="sales-2"]');
+  await page.click("[data-step2]");
+  await page.waitForFunction(() => location.hash === "#/module/F1");
+  if (!(await page.locator(".me-chip").count())) throw new Error("account chip missing after sign-up");
   const errors = [];
   page.on("pageerror", (e) => errors.push(`${page.url()}: ${e.message}`));
   page.on("console", (m) => { if (m.type() === "error" && !/fonts\.g/.test(m.text())) errors.push(`${page.url()}: ${m.text()}`); });

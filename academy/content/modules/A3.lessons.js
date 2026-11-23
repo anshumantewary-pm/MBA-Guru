@@ -2,7 +2,7 @@ Academy.add("A3", "lessons", {
   lessons: [
     {
       title: "Running pilots with 5 to 10 friendly customers",
-      minutes: 10,
+      minutes: 16,
       summary: "How to design a pilot with entry criteria, success criteria, duration, an owner and a path to paid, and how to collect feedback in writing.",
       blocks: [
         { type: "p", text: "A pilot is a time-bound trial of your product with a small number of real customers, run to prove that it delivers the promised outcome in their setting. Done well, it produces evidence, case studies and your first paying accounts. Done badly, it becomes an open-ended free service that never converts." },
@@ -26,6 +26,33 @@ Academy.add("A3", "lessons", {
         ] },
         { type: "callout", tone: "example", title: "Worked example", text: "Example: a Mysuru team piloting a hostel attendance app picks 6 hostels meeting its entry criteria (50+ residents, warden uses a smartphone). Success: 90% of residents marked daily for 6 weeks, and the warden's monthly report time down from 5 hours to under 1. Each warden fills a 5-question form every Friday. At week 6, 4 of 6 hostels meet the criteria and 3 sign the agreed ₹2,000 a month plan." },
         { type: "callout", tone: "warn", title: "Collect feedback in writing", text: "Verbal feedback fades and shifts. A weekly written form, even a short WhatsApp reply to three fixed questions, gives you a record to compare over time and quotes you can use later, with permission." },
+        { type: "h", text: "Going deeper: where a pilot sits in the testing ladder" },
+        { type: "p", text: "Agile teams borrow the **V-model** from systems engineering: every level of work on the way down is paired with a test on the way up. A pilot is not a bigger demo. It is the test that proves the product changes how real customers work, a level above anything your own team can test in-house." },
+        { type: "table", head: ["Level of work", "Tested by", "Passing means"], rows: [
+          ["Function (code)", "Unit tests", "The code does what the engineer intended"],
+          ["Story", "Story acceptance tests", "The product owner accepts the story"],
+          ["Feature (epic)", "User acceptance testing", "Users can complete the whole flow"],
+          [
+            "Capability milestone",
+            "**Pilot with real customers**",
+            "Customers actually use it in their work"
+          ],
+          [
+            "Full capability",
+            "Production use at scale",
+            "The value shows up in customers' results"
+          ]
+        ] },
+        { type: "p", text: "Ask four questions about every pilot result, adapted from the Agile course: **Have we made real progress, and what is the proof? Did we stay within our constraints? What did we learn that changes future work? Was it valuable: did the customer's results or behaviour change?** A technical test can prove the product works. Only a pilot in the customer's own setting can prove it is worth paying for." },
+        { type: "h", text: "Pull the uncertainty forward" },
+        { type: "p", text: "Alexander Laufer's research on hundreds of projects, which the course draws on, recommends tackling the biggest unknowns first rather than hoping they resolve later. Before a pilot, list what could sink it, then use a short **spike** (a time-boxed investigation that answers a question rather than adding a feature) or a prototype to answer the scariest question early. Other tactics: postpone detailed planning of the uncertain parts, keep risky components loosely coupled so a failure does not cascade, and sit close to the customer so questions get answered in hours, not weeks." },
+        { type: "case", label: "Case study · from Agile practice", title: "Twenty times the return by sitting with the buyer", situation: "A US Navy shore-energy programme used a scoring tool to choose energy projects from a portfolio of roughly $200M a year across 240 installations. Bad input data meant money-losing projects were being funded.", action: "The supporting team pulled the data-quality problem forward even though it was outside the original scope, reused the existing scoring templates, had super users test prototypes, and sat next to the programme office so it could reach every installation on one call.", result: "As reported in the course, the first year saved about $20M a year from a roughly $1M effort, around 20x return, and the programme kept its funding while results improved year after year.", lesson: "In a pilot, proximity to the customer and early attention to the scariest unknown matter more than a perfect plan." },
+        { type: "checklist", title: "Pilot plan check", items: [
+          "Success criteria measure a change in the customer's work, not just usage of features.",
+          "The three biggest unknowns are listed, with a spike or test for the worst one.",
+          "Someone on your team can be reached by pilot users the same day.",
+          "You know which level of the testing ladder the pilot must pass."
+        ] },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "Draft a pilot plan for 5 customers with all five parts filled in. Identify the 5 customers by name and check each against your entry criteria. This is practical task 1." }
       ],
       takeaways: [
@@ -33,6 +60,11 @@ Academy.add("A3", "lessons", {
         "Choose 5 to 10 friendly customers who match your target segment.",
         "Agree success criteria before the start, in writing.",
         "Collect feedback weekly in writing so you can compare and quote it."
+      ],
+      selfCheck: [
+        "Which level of the testing ladder does a pilot prove, and why can't in-house testing prove it?",
+        "What is a spike, and which unknown in your pilot deserves one?",
+        "Name the four questions to ask of every pilot result."
       ]
     },
     {
@@ -71,11 +103,16 @@ Academy.add("A3", "lessons", {
         "Each channel has a bias; combining them gives a truer picture.",
         "Review all feedback in one sheet every week, grouped by theme.",
         "Close the loop by telling customers what changed."
+      ],
+      selfCheck: [
+        "Which feedback channel do you currently ignore?",
+        "How will you capture WhatsApp voice-note feedback in your sheet?",
+        "What did you last change because of feedback, and did you tell the customer?"
       ]
     },
     {
       title: "Quality and compliance",
-      minutes: 9,
+      minutes: 13,
       summary: "How to identify which product standards and labelling rules apply to goods, and how to write scope and service levels for services.",
       blocks: [
         { type: "p", text: "Quality and compliance are basic needs in the Kano sense: buyers do not praise you for meeting them, but failure can stop sales, trigger penalties or damage trust permanently. A PM does not need to be a lawyer, but must know which rules apply to the category and build them into the plan before launch, not after a distributor rejects the product." },
@@ -98,6 +135,31 @@ Academy.add("A3", "lessons", {
         ] },
         { type: "callout", tone: "example", title: "Worked example", text: "Example: a Gurugram IT support firm for small offices writes its SLA: priority 1 (office cannot work) response within 1 hour and resolution or workaround within 4 hours, 8 am to 8 pm, Monday to Saturday; priority 2 response within 4 hours; monthly uptime report. Out of scope: hardware repairs and personal devices. Missing the priority 1 target twice in a month gives the client a 10% credit." },
         { type: "callout", tone: "warn", title: "Common mistakes", text: "Assuming a rule does not apply because competitors ignore it; relying on old information; promising SLAs the team cannot meet; and leaving the out-of-scope list blank, which invites disputes." },
+        { type: "h", text: "Going deeper: closing is controlling" },
+        { type: "p", text: "Quality problems usually come from work that was never properly closed: a feature declared done before it was tested on real devices, documented, or reviewed against a rule. Agile teams prevent this with a **Definition of Done** agreed before work starts. The Agile course's phrase is \"closing is controlling\": if no story in a sprint meets the Definition of Done, the team never really planned to close anything." },
+        { type: "table", head: ["Test question", "Name in Agile practice", "Who writes the test"], rows: [
+          ["Does it work?", "Test-driven development (TDD)", "Engineers, before writing the code"],
+          [
+            "Will the customer accept it?",
+            "Acceptance-test-driven development (ATDD)",
+            "Product owner with users"
+          ],
+          [
+            "Is it actually valuable?",
+            "Behaviour-driven development (BDD) and pilot results",
+            "PM with customers and stakeholders"
+          ]
+        ] },
+        { type: "template", title: "Definition of Done with compliance built in", lines: [
+          "[ ] Acceptance criteria pass on the target devices and networks",
+          "[ ] Product owner accepted; one stakeholder reviewed",
+          "[ ] Compliance items for this change checked (labelling / BIS / GST invoice format / DPDP notice)",
+          "[ ] Personal data fields match the data map; consent text updated if needed",
+          "[ ] Help text and support note written",
+          "[ ] Sales and support told what changed",
+          "[ ] No open critical or high bugs"
+        ], note: "Testing and closing start on day one of the sprint, not at the end. If compliance review is a bottleneck, bring the reviewer into sprint planning." },
+        { type: "callout", tone: "tip", title: "Hardening sprints, sparingly", text: "Large integrated products sometimes add a hardening sprint at the end of a release for long integration tests and paying down technical debt. Use it as a last resort. If you need one every release, your Definition of Done is too weak." },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "Start your compliance checklist: list every regime that might apply to your product, with the official source you checked and the date. For services, draft a one-page scope and SLA. This is part of practical task 3." }
       ],
       takeaways: [
@@ -105,6 +167,11 @@ Academy.add("A3", "lessons", {
         "For goods, check BIS, FSSAI, Legal Metrology and labelling rules that apply (verify).",
         "For services, write the scope and SLAs you can measure and meet.",
         "Record the source and date for every compliance item."
+      ],
+      selfCheck: [
+        "What does \"closing is controlling\" mean for quality?",
+        "Which compliance item belongs in your Definition of Done?",
+        "Who should write the acceptance tests, and when?"
       ]
     },
     {
@@ -138,11 +205,16 @@ Academy.add("A3", "lessons", {
         "Plan notice, consent and security as product features.",
         "Collect only the data you can justify, and set retention rules.",
         "Record sources and get qualified advice before launch."
+      ],
+      selfCheck: [
+        "Which fields in your data map could you stop collecting?",
+        "Where in your product will users see the privacy notice?",
+        "Who will you ask for qualified advice before launch?"
       ]
     },
     {
       title: "Product metrics: North Star, activation, retention and adoption",
-      minutes: 11,
+      minutes: 14,
       summary: "How to choose a North Star metric, define activation, read retention cohorts and track feature adoption every week.",
       blocks: [
         { type: "p", text: "Revenue tells you what happened last month. Product metrics tell you whether customers are getting value now, which predicts next quarter's revenue. Four metrics form the core set." },
@@ -174,6 +246,31 @@ Academy.add("A3", "lessons", {
           "Track adoption for your top 3 features.",
           "Review all four every week at the same time."
         ] },
+        { type: "h", text: "Going deeper: watch the team's health next to the product's" },
+        { type: "p", text: "Product metrics show whether customers get value. A second, smaller set shows whether the team can keep delivering it. The Agile course recommends controlling through **actuals, not estimates**: count finished, accepted work rather than self-reported percent complete. It also highlights four signals a PM can read every week." },
+        { type: "table", head: ["Signal", "What it tells you", "Caution"], rows: [
+          [
+            "Velocity (points finished per sprint)",
+            "Truthful about the past",
+            "Reactive: by the time it drops, the problem has happened"
+          ],
+          [
+            "Team happiness (a 1 to 5 vote each sprint)",
+            "Predictive: in the course's experience it dips about two sprints before velocity",
+            "Needs a conversation to find the cause"
+          ],
+          [
+            "Stakeholder feedback flow",
+            "Whether the work matters to them",
+            "Silence is a warning, not a compliment"
+          ],
+          [
+            "Attendance and energy at sprint reviews",
+            "Whether sponsors still care",
+            "Falling attendance means you are drifting off target"
+          ]
+        ] },
+        { type: "p", text: "Keep these to one line each on your product health dashboard. Their job is to turn into simple decisions, such as \"split the big story\" or \"invite the sponsor to the next review\", not to become another report." },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "Define your North Star and 3 input metrics, write your activation event, and build a monthly retention cohort table from real or sample data. This is practical task 2." }
       ],
       takeaways: [
@@ -181,6 +278,11 @@ Academy.add("A3", "lessons", {
         "Activation is the first moment of real value, not a download or sign-up.",
         "Retention cohorts show what share of each starting group stays active.",
         "Track feature adoption to see which features earn their place."
+      ],
+      selfCheck: [
+        "Why measure actuals rather than percent complete?",
+        "Why is team happiness a leading signal and velocity a lagging one?",
+        "What does stakeholder silence usually mean?"
       ]
     },
     {
@@ -215,6 +317,11 @@ Academy.add("A3", "lessons", {
         "Involve the decision-maker, not only the daily user.",
         "Fix the price, plan and start date before the pilot begins.",
         "Share weekly progress so the final decision is no surprise."
+      ],
+      selfCheck: [
+        "Who on the customer side makes the paid decision, and have you met them?",
+        "What price and start date are written into your pilot agreement?",
+        "What happens on the day after a successful pilot?"
       ]
     }
   ]

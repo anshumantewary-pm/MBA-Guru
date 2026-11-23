@@ -75,6 +75,8 @@ Academy.add("A3", "practice", {
   resources: [
     "Lean Analytics (Alistair Croll and Benjamin Yoskovitz)",
     "DPDP Rules, 2025 notification and PIB release (verify what applies when)",
-    "Official BIS, FSSAI and Legal Metrology sources for your category (verify)"
+    "Official BIS, FSSAI and Legal Metrology sources for your category (verify)",
+    "Agile Project Management Professional Certificate, University of Maryland (edX): Agile Process, Project and Program Controls course",
+    "Simultaneous Management (Alexander Laufer), on managing uncertainty in projects"
   ]
 });

@@ -75,6 +75,8 @@ Academy.add("A8", "practice", {
   },
   reportBack: "Friday report-back: share the top reason a real lost or churned customer gave you in their own words, the experiment you ran or planned and its decision, and the one dashboard trend that concerns you.",
   resources: [
-    "Hooked, Nir Eyal (optional)"
+    "Hooked, Nir Eyal (optional)",
+    "Agile Project Management Professional Certificate, University of Maryland (edX): Agile Process, Project and Program Controls course",
+    "Out of the Crisis (W. Edwards Deming), the source of the PDCA improvement cycle"
   ]
 });

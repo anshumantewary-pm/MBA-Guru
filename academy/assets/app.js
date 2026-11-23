@@ -421,6 +421,7 @@
           <h2>${fmt(l.title)}</h2>
           ${l.summary ? `<p class="summary">${fmt(l.summary)}</p>` : ""}
           ${(l.blocks || []).map(block).join("")}
+          ${l.selfCheck && l.selfCheck.length ? `<div class="selfcheck"><span class="label">Check your understanding</span><ol>${l.selfCheck.map((t) => `<li>${fmt(t)}</li>`).join("")}</ol></div>` : ""}
           ${l.takeaways && l.takeaways.length ? `<div class="takeaways"><span class="label">Key takeaways</span><ul>${l.takeaways.map((t) => `<li>${fmt(t)}</li>`).join("")}</ul></div>` : ""}
           <div class="lesson-actions">
             ${i > 0 ? `<a class="pill" href="#/module/${m.id}/lessons/${i - 1}">← Previous</a>` : `<span></span>`}

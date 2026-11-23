@@ -59,6 +59,22 @@
       case "table":
         return `<div class="table-wrap"><table><thead><tr>${(b.head || []).map((h) => `<th>${fmt(h)}</th>`).join("")}</tr></thead><tbody>${(b.rows || [])
           .map((r) => `<tr>${r.map((c) => `<td>${fmt(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+      case "case": {
+        // A short case study: situation, what they did, what happened, and the lesson.
+        const parts = [["Situation", b.situation], ["What they did", b.action], ["Result", b.result], ["The lesson", b.lesson]]
+          .filter((x) => x[1]);
+        return `<section class="case"><span class="label">${esc(b.label || "Case study")}</span>${b.title ? `<h4>${fmt(b.title)}</h4>` : ""}<dl>${parts
+          .map(([k, v]) => `<div><dt>${k}</dt><dd>${fmt(v)}</dd></div>`).join("")}</dl></section>`;
+      }
+      case "template":
+        // A fill-in template the learner can copy into their own playbook.
+        return `<figure class="template"><figcaption class="label">${esc(b.title || "Template")}</figcaption><pre>${esc((b.lines || []).join("\n"))}</pre>${b.note ? `<p class="faint">${fmt(b.note)}</p>` : ""}</figure>`;
+      case "dialogue":
+        // A sample conversation: lines of { who, say } with an optional coaching note.
+        return `<figure class="dialogue">${b.title ? `<figcaption class="label">${esc(b.title)}</figcaption>` : ""}<dl>${(b.lines || [])
+          .map((l) => `<div><dt>${esc(l.who)}</dt><dd>${fmt(l.say)}</dd></div>`).join("")}</dl>${b.note ? `<p class="note">${fmt(b.note)}</p>` : ""}</figure>`;
+      case "checklist":
+        return `<div class="checklist">${b.title ? `<span class="label">${esc(b.title)}</span>` : ""}<ul>${(b.items || []).map((i) => `<li>${fmt(i)}</li>`).join("")}</ul></div>`;
       default: return "";
     }
   }

@@ -2,7 +2,7 @@ Academy.add("F1", "lessons", {
   lessons: [
     {
       title: "Segmentation: who, where and what they need",
-      minutes: 10,
+      minutes: 15,
       summary: "How to split a market into buyer groups by who they are, where they are and what they need, so every later decision has a clear target.",
       blocks: [
         { type: "p", text: "A market is not one crowd. It is many smaller groups of buyers who have different problems, budgets and ways of deciding. **Segmentation** is the work of splitting that crowd into groups whose members behave alike, so you can design, price and sell for each group on purpose instead of by accident." },
@@ -30,6 +30,55 @@ Academy.add("F1", "lessons", {
           "Using segments from a report instead of from your own buyers.",
           "Forgetting the non-buyer: people who enquired and walked away are a segment too."
         ] },
+        { type: "h", text: "Going deeper: needs-based segments beat demographic ones" },
+        { type: "p", text: "Demographic and geographic splits are cheap to collect, which is why most teams stop there. The trouble is that two buyers with the same profile can want completely different things. A 50-person garment exporter in Tiruppur and a 50-person garment exporter in Noida look identical on paper, but one may be fighting for working capital while the other is fighting buyer compliance audits. **A segment is only useful if its members would react to the same message, the same price and the same channel.** That test is behavioural, so it needs behavioural data: what triggered the enquiry, what they compared you with, and what they were willing to pay." },
+        { type: "p", text: "A practical way to get there is to segment in two passes. First group by need, using the problem buyers describe in their own words. Then, inside each need group, use who and where to decide how to reach them. This keeps the segment defined by the problem while still telling sales which city, channel and language to use." },
+        { type: "table", head: ["Test", "Question to ask of each segment", "Fail sign"], rows: [
+          [
+            "Identifiable",
+            "Can a rep tell, from a phone call, whether a lead belongs here?",
+            "\"We will know them when we see them\""
+          ],
+          [
+            "Substantial",
+            "Are there enough buyers to pay back the effort?",
+            "Fewer than 200 reachable buyers for a B2B product"
+          ],
+          [
+            "Accessible",
+            "Do you have a channel that reaches them at a sensible cost?",
+            "Only reachable through a partner you do not have"
+          ],
+          [
+            "Distinct",
+            "Would they respond differently from your other segments?",
+            "Same message, price and channel as another segment"
+          ],
+          [
+            "Actionable",
+            "Can you change product, price or message for them?",
+            "Nothing you would do differently"
+          ]
+        ] },
+        { type: "case", label: "Case study", title: "One market, four segments, one surprise", situation: "A Pune SaaS firm selling inventory software had 60 enquiries in six months and a 9% close rate. The founder described the market as \"small and medium businesses that hold stock\".", action: "The team tagged each enquiry by who, where and need, then grouped by need first. They also added a column for the average deal size and the number of sales visits it took to close.", result: "Tier 2 FMCG distributors closed at 27% with an average deal of ₹72,000 a year and two visits. Single shops closed at 4% with ₹6,000 deals and three visits each, meaning every shop sale lost money once the rep's time was counted. Within a quarter the firm stopped field-selling to single shops, moved them to a self-serve plan, and lifted the overall close rate to 18%.", lesson: "Segmentation is not a slide. It becomes valuable the moment you attach close rate, deal size and cost to sell to each group, because that shows where the money is made and lost." },
+        { type: "template", title: "Segment sheet: copy into your playbook", lines: [
+          "Segment name (plain words): ______________________",
+          "Main need, in the buyer's words: \"_______________________\"",
+          "Who they are: ________   Where they are: ________",
+          "Trigger that makes them look for a solution: ______________",
+          "Approx. number of such buyers we can reach: ______",
+          "Typical budget / ability to pay: ₹______ per year",
+          "Best channel to reach them: ______________",
+          "Evidence: __ enquiries, __ customers, __ interviews",
+          "Close rate so far: __%   Average deal: ₹______"
+        ], note: "Fill one sheet per segment. If you cannot fill the evidence line, the segment is still a hypothesis." },
+        { type: "checklist", title: "Your segmentation is ready when", items: [
+          "Every segment is named after a need, not only a city or company size.",
+          "There are between four and six segments, each with a one-line description.",
+          "Each segment has at least five real buyers or enquiries behind it.",
+          "A new rep could place a fresh lead into the right segment within two minutes of talking to them.",
+          "Non-buyers and lost deals are included, not only customers."
+        ] },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "Pull your last 30 to 60 enquiries or customers into a sheet. Add three columns: who, where and need. Group them and name no more than six segments. Bring the sheet to Tuesday's workshop." }
       ],
       takeaways: [
@@ -37,11 +86,16 @@ Academy.add("F1", "lessons", {
         "Build segments from your own buyers and enquiries, not from generic reports.",
         "Four to six named segments are enough to act on.",
         "Size, ability to pay and ease of reach decide which segments matter."
+      ],
+      selfCheck: [
+        "Why is \"need\" a more useful lens than city or company size on its own?",
+        "Your two biggest segments get the same message, price and channel. What does that suggest?",
+        "Which of your current segments costs more to sell to than it pays back?"
       ]
     },
     {
       title: "Targeting: choose where you can win first",
-      minutes: 9,
+      minutes: 14,
       summary: "How to pick the one or two segments where you can win first, using a simple scoring method instead of gut feel.",
       blocks: [
         { type: "p", text: "Once you have segments, the temptation is to chase all of them. **Targeting** is the discipline of choosing the one or two segments where you can win first, and saying no to the rest for now. It is not about reaching every possible buyer; it is about concentrating limited money, people and attention where they will produce proof fastest." },
@@ -70,6 +124,32 @@ Academy.add("F1", "lessons", {
           "Picking a segment because the founder likes it, with no buyer evidence.",
           "Never writing down the excluded segments, so every new lead reopens the debate."
         ] },
+        { type: "h", text: "Going deeper: weight the factors and look for the beachhead" },
+        { type: "p", text: "A plain total treats all five factors as equal, which is rarely true. Early in a product's life, **pain and reach matter most**, because you need customers quickly and cheaply. Later, ability to pay and competition matter more, because you are optimising for margin and defensibility. A simple fix is to give pain and reach double weight while you are still finding your first 20 customers." },
+        { type: "p", text: "The ideal first target is a **beachhead**: a segment small enough to dominate, where customers talk to each other, so each win makes the next one easier. Trade clusters are natural beachheads in India: the pharma distributors of one district, the textile traders of Surat's ring road markets, or the auto component makers of Pune's Chakan belt. Buyers in a cluster share suppliers, associations and WhatsApp groups, so a reference travels fast." },
+        { type: "table", head: ["Segment", "Pain ×2", "Pay", "Reach ×2", "Fit", "Competition", "Weighted total"], rows: [
+          ["Tier 2 FMCG distributors", "10", "4", "8", "4", "3", "**29**"],
+          ["Metro D2C brands", "8", "4", "6", "3", "2", "23"],
+          ["Retail chains", "6", "5", "4", "3", "3", "21"],
+          ["Single shops", "6", "1", "6", "4", "2", "19"]
+        ] },
+        { type: "case", label: "Case study", title: "Choosing the smaller segment on purpose", situation: "A Chennai firm building clinic management software had two candidate segments: all independent clinics in Tamil Nadu (large, scattered) and dental clinics in Chennai (about 1,500, tightly networked through the local dental association).", action: "The team chose Chennai dental clinics as its beachhead, even though the market was a fraction of the size. It sponsored two association events, built dental charting into the product, and offered the first 30 clinics a reference discount in exchange for a case study.", result: "It signed 30 clinics in five months, mostly through referrals, at a cost to acquire roughly a third of what cold outreach to general clinics had cost. The dental case studies then opened Coimbatore and Bengaluru dental clinics with almost no extra product work.", lesson: "A small segment you can win completely is worth more early on than a big segment where you are one of many. Look for groups that talk to each other." },
+        { type: "template", title: "Targeting decision note", lines: [
+          "Primary segment: ______________________",
+          "Why we can win here (evidence, not opinion): ______________",
+          "Secondary segment (later): ______________",
+          "Segments we are NOT targeting this quarter, and why:",
+          "  1. ________ because ________",
+          "  2. ________ because ________",
+          "What would make us change this decision: ______________",
+          "Review date: ________   Agreed by: Product ____ Sales ____ Marketing ____"
+        ] },
+        { type: "checklist", title: "A good targeting choice", items: [
+          "Is backed by at least three buyers who described the pain in their own words.",
+          "Can be reached through a channel you already have or can build within a month.",
+          "Is small enough that you could become the known name within a year.",
+          "Has a written list of excluded segments that sales and marketing have agreed to."
+        ] },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "Score your segments from lesson 1 on the five factors with one colleague from another role. Pick one primary segment, write two lines on why, and list what you are saying no to." }
       ],
       takeaways: [
@@ -77,11 +157,16 @@ Academy.add("F1", "lessons", {
         "Score pain, ability to pay, reach, fit and competition.",
         "Back the top choice with real buyer evidence.",
         "Write down the segments you are excluding."
+      ],
+      selfCheck: [
+        "Why might pain and reach deserve double weight in your first year?",
+        "What makes a trade cluster a good beachhead?",
+        "Name one segment you will say no to this quarter and the reason."
       ]
     },
     {
       title: "Personas: a one-page buyer profile",
-      minutes: 10,
+      minutes: 15,
       summary: "How to write a one-page persona covering role, budget, daily problems, how they decide, who influences them and what they fear.",
       blocks: [
         { type: "p", text: "A segment tells you which group to serve. A **persona** turns that group into a single, believable person your whole team can picture. It is a one-page profile that answers six questions: what is their role, what budget do they control, what problems fill their day, how do they decide, who influences them, and what do they fear?" },
@@ -110,6 +195,39 @@ Academy.add("F1", "lessons", {
           "Writing a persona with no fears; fear is often what blocks the sale.",
           "Leaving out influencers, which in Indian SMBs and corporates can matter as much as the buyer."
         ] },
+        { type: "h", text: "Going deeper: the buying committee, even in small firms" },
+        { type: "p", text: "Most B2B purchases involve more than one person, even in a small business. Writing a single persona hides this. A better habit is to write one main persona for the person who feels the pain most, then add short notes on the others who shape the decision. The common roles are the **economic buyer** (signs and controls budget), the **user** (lives with the product daily), the **influencer** (whose opinion is trusted, such as a CA or a relative), and the **blocker** (who can delay or veto, such as IT or an accountant who fears losing work)." },
+        { type: "table", head: ["Role", "In a family distributor", "In a mid-size manufacturer"], rows: [
+          ["Economic buyer", "Owner or a son who runs operations", "Plant head or CFO"],
+          ["User", "Billing clerk, warehouse supervisor", "Stores and dispatch team"],
+          ["Influencer", "The firm's CA, a peer distributor", "IT manager, a consultant"],
+          [
+            "Blocker",
+            "An accountant who maintains the old ledger",
+            "Procurement, which insists on three quotes"
+          ]
+        ] },
+        { type: "p", text: "Fears deserve special attention. Buyers rarely say them out loud, but they explain most stalled deals. Typical fears include losing data during a switch, staff refusing a new system, looking foolish in front of family if it fails, and being locked into a vendor who disappears. Ask \"What would worry you about changing how you do this?\" and listen for these themes." },
+        { type: "case", label: "Case study", title: "The persona that found the real blocker", situation: "An Ahmedabad payroll startup kept losing deals at the last step with textile units of 80 to 200 workers. Its persona described a modern HR manager eager to digitise.", action: "The team re-interviewed six lost prospects and rewrote the persona. They added the influencer, the outside CA who had run payroll for years, and his fear: losing a steady monthly fee.", result: "Sales started meeting the CA early and offered a partner arrangement where the CA reviewed payroll inside the product and kept the client relationship. Win rate in that segment rose from about one in eight to one in three over two quarters.", lesson: "A persona that leaves out influencers and fears describes a buyer who does not exist. The person who can say no is as important as the person who says yes." },
+        { type: "template", title: "One-page persona", lines: [
+          "Name and photo (fictional, but believable): ________",
+          "Role, business type, size, city: ________",
+          "Budget they can approve alone: ₹______",
+          "A normal day, in three lines: ________",
+          "Top three problems (with quotes): ________",
+          "How they decide (steps, time taken, who they ask): ________",
+          "Influencers and blockers: ________",
+          "Fears about changing: ________",
+          "Where they get information (WhatsApp groups, associations, YouTube, CA): ________",
+          "Words they use / words that put them off: ________",
+          "Evidence: based on __ interviews. Guesses marked with (?)"
+        ] },
+        { type: "checklist", title: "Persona quality check", items: [
+          "At least three quotes from real interviews appear on the page.",
+          "Influencers, blockers and fears are filled in, not left blank.",
+          "There are no hobbies or personal details that do not affect buying.",
+          "A salesperson reading it could change how they open the next call."
+        ] },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "Draft one persona for your primary segment using the six-part table. Mark every guess with a question mark and add one interview question to test each guess." }
       ],
       takeaways: [
@@ -117,11 +235,16 @@ Academy.add("F1", "lessons", {
         "Build it from real interviews and the buyer's own words.",
         "Keep it to one page and mark guesses clearly.",
         "Fears and influencers often explain lost deals better than features do."
+      ],
+      selfCheck: [
+        "Who are the economic buyer, user, influencer and blocker in your last lost deal?",
+        "Which question would surface a buyer's fears without leading them?",
+        "What on your current persona is a guess rather than evidence?"
       ]
     },
     {
       title: "Jobs to be done: the outcome behind the purchase",
-      minutes: 10,
+      minutes: 15,
       summary: "How to describe what buyers are really hiring your product to do, such as saving time, looking good or avoiding risk.",
       blocks: [
         { type: "p", text: "Buyers do not want a product; they want a job done. The **jobs to be done** (JTBD) idea says people \"hire\" a product to make progress in a specific situation. A shop owner does not want accounting software; he wants to file GST without a late-night panic and without paying a penalty." },
@@ -149,6 +272,50 @@ Academy.add("F1", "lessons", {
           "Ignoring the emotional and social layers, which often decide between two similar products."
         ] },
         { type: "callout", tone: "india", title: "India note", text: "In family-run firms, the social job often involves the family: a son wants to show his father that a new system works, or an owner wants to look professional to a national brand's area manager. Ask about these people directly." },
+        { type: "h", text: "Going deeper: the forces that push and pull a switch" },
+        { type: "p", text: "A job explains why someone wants progress. It does not explain why they actually switch. For that, JTBD practitioners use four **forces of progress**. Two push the buyer towards change: the **push** of the current problem and the **pull** of the new solution. Two hold them back: **anxiety** about the new thing and **habit** with the old one. A sale happens only when push and pull together outweigh anxiety and habit." },
+        { type: "table", head: ["Force", "Question to ask", "Example from a kirana supplier"], rows: [
+          [
+            "Push of the situation",
+            "What made the old way unbearable?",
+            "Lost a big retailer after two wrong deliveries"
+          ],
+          [
+            "Pull of the new solution",
+            "What did you picture being better?",
+            "Orders typed in once, no 9 pm calls"
+          ],
+          [
+            "Anxiety about the new",
+            "What worried you about switching?",
+            "Salesmen may refuse to use an app"
+          ],
+          [
+            "Habit of the present",
+            "What was comfortable about the old way?",
+            "The notebook always works, even without network"
+          ]
+        ] },
+        { type: "p", text: "This changes what you build and say. Many teams spend all their energy increasing pull with more features, when the cheaper win is reducing anxiety (a free migration, a trial with their own data, a local reference) or breaking habit (an offline mode that works like the notebook)." },
+        { type: "case", label: "Case study", title: "Selling against the notebook", situation: "The Coimbatore WhatsApp ordering tool had a strong job statement and good demos, yet only one in five trials converted. Suppliers liked it but kept going back to phone orders.", action: "The team ran switch interviews with ten converted and ten lapsed trial users, mapping the four forces. The biggest anxiety was salesmen refusing to change, and the biggest habit was the comfort of the notebook in low-network areas.", result: "They added a one-tap \"forward the order\" flow for salesmen, a simple offline mode, and a supplier-to-supplier reference call in the first week. Trial conversion rose to just under half within two months, with no new headline features.", lesson: "Most products lose to anxiety and habit, not to competitors. Map all four forces before adding features." },
+        { type: "template", title: "Job statement and forces worksheet", lines: [
+          "When I ______________________ (situation, trigger)",
+          "I want to ____________________ (motivation, progress)",
+          "So I can _____________________ (outcome that matters)",
+          "",
+          "Functional layer: ________  Emotional: ________  Social: ________",
+          "Push (pain of today): ________",
+          "Pull (picture of better): ________",
+          "Anxiety (fear of the new): ________",
+          "Habit (comfort of the old): ________",
+          "One thing we can do to reduce anxiety: ________"
+        ] },
+        { type: "checklist", title: "A strong job statement", items: [
+          "Contains no product name, feature or technology.",
+          "Describes a specific trigger moment, not a general wish.",
+          "Has an outcome a buyer would actually say out loud.",
+          "Was corrected or confirmed by at least two real buyers."
+        ] },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "Write one job statement in the \"When I, I want to, so I can\" form for your primary segment. Read it aloud to two buyers and note how they change it." }
       ],
       takeaways: [
@@ -156,11 +323,16 @@ Academy.add("F1", "lessons", {
         "Jobs have functional, emotional and social layers.",
         "A good job statement contains no product or feature.",
         "The job reveals your true competitors, including informal workarounds."
+      ],
+      selfCheck: [
+        "Rewrite a feature-based statement about your product as a solution-free job.",
+        "Of the four forces, which one most often stops your buyers from switching?",
+        "What is one low-cost way to reduce your buyer's anxiety about switching?"
       ]
     },
     {
       title: "Interviewing without leading",
-      minutes: 11,
+      minutes: 16,
       summary: "How to run buyer interviews that ask about past behaviour, not opinions about your idea, so the signal you collect is reliable.",
       blocks: [
         { type: "p", text: "Most customer interviews produce false comfort. People are polite; when you ask \"Would you buy this?\" they say yes to avoid disappointing you. Opinions about the future are cheap. **Past behaviour** is evidence: what someone actually did, spent and struggled with last time tells you what they are likely to do next." },
@@ -191,6 +363,51 @@ Academy.add("F1", "lessons", {
           "Talking more than the buyer; aim for them to speak at least 70% of the time.",
           "Interviewing only friends or existing fans."
         ] },
+        { type: "h", text: "Going deeper: a sample interview, line by line" },
+        { type: "p", text: "The hardest part of a good interview is not the opening question but the follow-up. Most interviewers accept the first, vague answer and move on. Strong interviewers stay on one story until they have the facts: when it happened, what it cost, who was involved, and what was tried. The dialogue below shows the difference." },
+        { type: "dialogue", title: "Interview with a distributor owner (good follow-ups)", lines: [
+          { who: "Interviewer", say: "Tell me about the last time stock records and actual stock did not match." },
+          { who: "Owner", say: "Happens all the time. It is a headache." },
+          { who: "Interviewer", say: "When was the most recent time you noticed it?" },
+          { who: "Owner", say: "Last Diwali stock count. We were short on two fast-moving SKUs." },
+          { who: "Interviewer", say: "What happened after you found out?" },
+          { who: "Owner", say: "Three retailers' orders were short. One of them moved part of his business to another distributor." },
+          { who: "Interviewer", say: "Roughly what was that worth to you?" },
+          { who: "Owner", say: "Maybe ₹40,000 a month in billing from that retailer." },
+          { who: "Interviewer", say: "What have you tried to stop it happening again?" },
+          { who: "Owner", say: "My nephew does a weekly count now, and we bought a Tally add-on, but nobody updates it." }
+        ], note: "Notice the interviewer never mentions a product. In six questions they found a specific incident, its cost in rupees, a workaround already paid for and the reason it failed. That is evidence. \"It is a headache\" alone is not." },
+        { type: "table", head: ["Signal", "Weak", "Strong"], rows: [
+          ["Problem", "\"It is annoying\"", "A dated incident with a cost"],
+          [
+            "Spending",
+            "\"We might pay for a fix\"",
+            "Already paid a CA, a developer or a nephew to fix it"
+          ],
+          ["Urgency", "\"Someday we should\"", "Actively looking, comparing options now"],
+          [
+            "Commitment",
+            "Compliments about the idea",
+            "Agrees to a follow-up, a pilot or an introduction"
+          ]
+        ] },
+        { type: "callout", tone: "india", title: "India note", text: "Owners often answer in Hindi, Tamil or a mix of languages, and many prefer a phone call or a visit to a video call. Offer the language and format they are comfortable with, and keep a colleague who speaks it on the call. Accurate quotes in the buyer's own language are worth more than a neat English summary." },
+        { type: "template", title: "Six-question interview guide", lines: [
+          "1. Tell me about your role and a normal working day.",
+          "2. Tell me about the last time [problem] happened. When was it?",
+          "3. What happened next? What did it cost you in money or time?",
+          "4. What have you tried to fix it? Why did you stop or keep using it?",
+          "5. Who else was involved in deciding what to do?",
+          "6. Who else should I speak to about this?",
+          "Follow-ups to use anywhere: \"What happened next?\" \"Why did that matter?\" \"Can you give me an example?\""
+        ] },
+        { type: "checklist", title: "After each interview, check", items: [
+          "You can name one dated incident and its approximate cost.",
+          "You captured at least three exact quotes.",
+          "You did not pitch, demo or describe your solution.",
+          "You separated facts, quotes and your own interpretation in the notes.",
+          "You asked for one referral."
+        ] },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "Rewrite your interview guide so every question asks about the past. Book three interviews for this week and record, with consent, what triggered their last purchase, who decided and what almost stopped it." }
       ],
       takeaways: [
@@ -198,11 +415,16 @@ Academy.add("F1", "lessons", {
         "Ask about the last time, what it cost and what they tried.",
         "Never pitch during a discovery interview.",
         "Money or time already spent is the strongest signal of real pain."
+      ],
+      selfCheck: [
+        "Turn \"Would you use an app for this?\" into a past-behaviour question.",
+        "What is the difference between a weak and a strong commitment signal?",
+        "In your last interview, what share of the time did you talk?"
       ]
     },
     {
       title: "Competitor mapping: the full set of alternatives",
-      minutes: 9,
+      minutes: 14,
       summary: "How to map direct rivals, substitutes, doing nothing and the informal local option, so you know what buyers really compare you with.",
       blocks: [
         { type: "p", text: "Your real competition is whatever the buyer would do if you did not exist. That is far wider than the companies that look like you. A complete **competitor map** includes four groups: direct rivals, substitutes, doing nothing, and the informal local option." },
@@ -229,6 +451,39 @@ Academy.add("F1", "lessons", {
           "Copying rivals' feature lists instead of understanding why buyers pick them.",
           "Underestimating inertia; \"we will manage for now\" is a competitor."
         ] },
+        { type: "h", text: "Going deeper: compare on the buyer's criteria, not your features" },
+        { type: "p", text: "A feature-by-feature grid almost always makes your product look best, because you chose the features. Buyers decide on a handful of criteria that matter to them: price, ease of starting, trust, support in their language, and whether it fixes the job. The more honest exercise is to list those criteria from interviews, then score every alternative, including doing nothing, the way a buyer would." },
+        { type: "table", head: [
+          "Buyer criterion",
+          "Us",
+          "National SaaS rival",
+          "Local developer app",
+          "Excel + WhatsApp"
+        ], rows: [
+          ["Monthly cost", "₹2,000", "₹3,500", "₹500", "Free"],
+          ["Time to get started", "1 week", "3 to 4 weeks", "2 days", "Already in use"],
+          ["Fee collection and reminders", "Yes", "Yes", "No", "Manual"],
+          ["Support in Hindi, on call", "Yes", "Email only", "Yes, the developer", "None needed"],
+          ["Trust (references nearby)", "Low today", "Medium", "High", "High"]
+        ] },
+        { type: "p", text: "Seen this way, the gaps are obvious. In this example the firm wins on fee collection and support but loses on trust and price against the local option. The plan writes itself: collect local references fast, and show the rupee value of fee collection so the price gap feels small." },
+        { type: "case", label: "Case study", title: "When the real rival is \"we will manage\"", situation: "A Kochi team sold a maintenance-scheduling tool to small hotels and homestays. They had built a detailed comparison against two funded competitors but kept hearing \"not right now\".", action: "They reviewed 25 lost deals. Only three went to a competitor; the other 22 chose to carry on with a register and the manager's memory. The team calculated the cost of doing nothing: one AC breakdown in peak season meant refunds and bad reviews worth about ₹25,000 to ₹60,000.", result: "Sales replaced the competitor slide with a one-page \"cost of a peak-season breakdown\" sheet and a pre-season checklist offer. Lost-to-no-decision fell sharply the next season and became the team's main message.", lesson: "If most lost deals go to no decision, your competitor is inertia. Fight it with the cost of the problem, not with feature comparisons." },
+        { type: "template", title: "Competitor sheet row", lines: [
+          "Alternative: ________   Group: direct / substitute / do nothing / local",
+          "Price (real, with source): ₹______",
+          "How buyers find it (channel): ________",
+          "Its main message, in its words: \"________\"",
+          "Why buyers choose it, in their words: \"________\"",
+          "Its weakness we can show, not just claim: ________",
+          "Our one-line answer: ________",
+          "Last checked on: ________"
+        ] },
+        { type: "checklist", title: "Competitor map check", items: [
+          "At least one entry in each of the four groups.",
+          "Prices are real and dated, not guessed.",
+          "Comparison criteria came from buyer interviews.",
+          "You know what share of lost deals went to no decision."
+        ] },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "Start a competitor sheet with at least one entry in each of the four groups. For each, write price, channel, message and weakness. Add one sentence on what doing nothing costs your buyer." }
       ],
       takeaways: [
@@ -236,11 +491,16 @@ Academy.add("F1", "lessons", {
         "Your real competitor is what the buyer would do without you.",
         "Record price, channel, message and weakness for each.",
         "The cost of doing nothing sets the bar your value must clear."
+      ],
+      selfCheck: [
+        "Why does a feature grid usually flatter your own product?",
+        "What share of your lost deals went to no decision, and what does that tell you?",
+        "Estimate in rupees what doing nothing costs your typical buyer per month."
       ]
     },
     {
       title: "India buyer context",
-      minutes: 11,
+      minutes: 15,
       summary: "How price sensitivity, reference-based trust, family-led SMB decisions, long corporate approval chains and regional differences shape selling in India.",
       blocks: [
         { type: "p", text: "Frameworks travel well; buyer behaviour does not. Five features of Indian buying shape almost every product, and ignoring any of them leads to stalled deals and confusing feedback." },
@@ -268,6 +528,50 @@ Academy.add("F1", "lessons", {
           "Estimate a realistic decision time for each segment and plan your pipeline around it."
         ] },
         { type: "callout", tone: "warn", title: "Avoid stereotypes", text: "These patterns are common, not universal. A young founder in Surat may buy faster than a Mumbai corporate. Use the context as a set of questions to ask, then trust what your interviews tell you." },
+        { type: "h", text: "Going deeper: how a deal actually moves in two kinds of firm" },
+        { type: "p", text: "The same product can take ten days to sell to a family business and six months to sell to a listed company. The difference is rarely about the product; it is about the steps the buyer's organisation requires. Mapping those steps early lets you forecast honestly and prepare documents before they are asked for." },
+        { type: "table", head: ["Step", "Family-run SMB", "Large corporate"], rows: [
+          [
+            "First interest",
+            "Owner or son sees a peer using it",
+            "A manager raises a need, often after a budget cycle"
+          ],
+          [
+            "Evaluation",
+            "Demo, often at their premises, sometimes with family present",
+            "Demos to users, then a shortlist of three vendors"
+          ],
+          [
+            "Proof",
+            "A reference call with a known peer, a short trial",
+            "Pilot with success criteria, security review"
+          ],
+          [
+            "Approval",
+            "Owner decides, sometimes after asking a CA",
+            "Finance, IT, legal and procurement sign-offs"
+          ],
+          [
+            "Paperwork",
+            "Invoice, UPI or cheque, GST details",
+            "Vendor registration, NDA, MSA, PO, payment terms of 45 to 90 days"
+          ],
+          ["Typical time", "1 to 6 weeks", "3 to 9 months"]
+        ] },
+        { type: "case", label: "Case study", title: "Planning for procurement from day one", situation: "A Bengaluru analytics startup won an enthusiastic pilot with a large consumer goods company. The business team wanted to sign in March, but the deal slipped to September.", action: "On the next large deal, the team asked in the first meeting: \"Once you are happy, what steps does a new vendor go through here?\" They prepared vendor registration documents, a security questionnaire and a draft contract in parallel with the pilot.", result: "The second deal closed in about half the time, and cash flow forecasts became reliable because the team planned around the real steps instead of the champion's optimism.", lesson: "Enthusiasm is not approval. Ask about the process early and run the paperwork alongside the evaluation." },
+        { type: "dialogue", title: "Asking about the decision process without sounding pushy", lines: [
+          { who: "You", say: "If this works well in the trial, what usually happens next when you bring in a new supplier?" },
+          { who: "Buyer", say: "I would discuss with my father, and our CA would check the costs." },
+          { who: "You", say: "That makes sense. Would it help if I joined that conversation, or sent a one-page summary your CA could review?" },
+          { who: "Buyer", say: "A summary would help. He likes to see the yearly cost and GST clearly." }
+        ], note: "Asking \"what usually happens next\" is neutral and respectful. It surfaces the real decider and the influencer, and gives you a useful next step." },
+        { type: "checklist", title: "Context mapped for each segment", items: [
+          "Signer, influencers and blockers are named by role.",
+          "Decision time is estimated from real deals, not hope.",
+          "Required documents are listed and ready.",
+          "Languages for sales and marketing material are decided.",
+          "Two or three named references are available before outreach scales."
+        ] },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "For your primary segment, write down who signs, who influences, who blocks, the likely decision time and the languages you need. Check each point in your next two interviews." }
       ],
       takeaways: [
@@ -275,6 +579,11 @@ Academy.add("F1", "lessons", {
         "References from peers often matter more than advertising.",
         "In family-run SMBs, the owner or family usually decides.",
         "Plan for long corporate approvals and regional language needs."
+      ],
+      selfCheck: [
+        "What question reveals the real decision process early, without sounding pushy?",
+        "Which documents would a large corporate buyer ask you for before a PO?",
+        "Where might the patterns in this lesson not apply to your buyers?"
       ]
     }
   ]

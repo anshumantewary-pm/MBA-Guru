@@ -176,16 +176,16 @@ The reasoning behind them is in [docs/frameworks.md](docs/frameworks.md): the pr
 
 ## MBA Guru Academy
 
-[`academy/`](academy/index.html) is a web learning platform for the **Sales & Marketing Mastery** programme: 12 weeks, four roles, 37 modules. A learner picks a role (Product Manager, Sales Manager, Marketing or Digital Marketing). They then work through the shared 4Ps foundation (F1 to F4), their own eight-module track and the capstone.
+[`academy/`](academy/index.html) is a web learning platform for the **Sales & Marketing Mastery** programme: 12 weeks, four roles, 37 modules. A learner signs up (name, email, company, and the real product they will work on), picks their profession (Product Manager, Sales Manager, Marketing or Digital Marketing) and one of three avatars for that profession. They then land on a start page that asks what they want to do: begin week 1, jump into their track, see their path, watch a video, browse every module or check progress. They work through the shared 4Ps foundation (F1 to F4), their own eight-module track and the capstone.
 
 Every module has:
 
-- **Lessons:** 6 to 9 long-form lessons with worked examples in rupees, step-by-step methods, tables and an "Apply it this week" action.
+- **Lessons:** 6 to 9 long-form lessons with worked examples in rupees, step-by-step methods, tables and an "Apply it this week" action. Enriched lessons also carry case studies, fill-in templates, sample dialogues, quality checklists and self-check questions.
 - **A narrated video lesson:** an animated 12 to 14 scene explainer of about 5 minutes. The browser's voice reads the narration, with captions, a scene timeline, a transcript, speed control and keyboard shortcuts.
 - **A Friday quiz:** five questions with explanations. The pass mark is 4 out of 5, and only the first attempt and one retake count toward certification.
 - **Practical tasks:** step checklists, a playbook deliverable, rubric self-checks, the Tuesday workshop plan and the Friday report-back prompt.
 
-The progress page holds the role-play scorecard and the capstone rubric. It combines them with quiz and task scores into the programme's weighting (15 / 40 / 15 / 30) and unlocks a printable certificate at 70%. Learners can also download every task note as one Markdown playbook. Progress stays in the browser.
+The progress page holds the role-play scorecard and the capstone rubric. It combines them with quiz and task scores into the programme's weighting (15 / 40 / 15 / 30) and unlocks a printable certificate at 70%. Learners can also download every task note as one Markdown playbook. The account and progress stay in the browser; there is no server.
 
 To run it, serve the folder and open it:
 
@@ -193,7 +193,7 @@ To run it, serve the folder and open it:
 python -m http.server -d academy 8000
 ```
 
-It is plain HTML, CSS and JavaScript with no build step, and it is published with the web app on GitHub Pages under `/academy/`. Module content lives in `academy/content/modules/<ID>.{lessons,video,practice}.js`. `node academy/tools/validate.js` checks every module against the schema, and `node academy/tools/smoke.js` opens all 192 pages in a headless browser.
+It is plain HTML, CSS and JavaScript with no build step, and it is published with the web app on GitHub Pages under `/academy/`. Module content lives in `academy/content/modules/<ID>.{lessons,video,practice}.js`. `node academy/tools/validate.js` checks every module against the schema, and `node academy/tools/smoke.js` signs up through the form and then opens all 194 pages in a headless browser.
 
 ## Project layout
 

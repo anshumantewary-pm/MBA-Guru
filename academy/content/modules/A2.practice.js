@@ -3,7 +3,7 @@ Academy.add("A2", "practice", {
     { q: "Reach is 2,000, impact 2, confidence 80% and effort 4 person-months. The RICE score is:", options: ["1,600", "400", "800", "3,200"], answer: 2, explain: "RICE = (Reach × Impact × Confidence) ÷ Effort = 2,000 × 2 × 0.8 ÷ 4 = 3,200 ÷ 4 = 800. The tempting 3,200 forgets to divide by effort, and 400 leaves out the impact factor of 2. Always convert confidence to a decimal before multiplying." },
     { q: "In the Kano model, a delighter is:", options: ["a basic need buyers expect", "an unexpected feature that pleases when present and costs nothing when absent", "a compliance must-have", "a performance feature"], answer: 1, explain: "Delighters are features nobody asked for: customers do not complain when they are missing but are pleasantly surprised when they appear. Basic needs and compliance items are expected, so their absence causes dissatisfaction. Performance features give more satisfaction the better they get." },
     { q: "Non-goals in a PRD exist to:", options: ["say what this release won't build, to stop scope creep", "list bugs", "list competitors", "record the budget"], answer: 0, explain: "Non-goals make explicit what the release will not include, so the team and sales can point to an agreed page when new requests arrive. Bugs belong in the tracker, and competitors and budget have their own documents." },
-    { q: "A now, next, later roadmap mainly shows:", options: ["exact launch dates", "engineering estimates", "the order and priority of outcomes", "pricing"], answer: 2, explain: "An outcome roadmap groups outcomes and themes into three horizons by priority and certainty. Only the now horizon usually carries firm dates, so exact launch dates are not its main purpose. Estimates and pricing live elsewhere." },
+    { q: "Your team estimates at 50/50 and commits only the Musts it could finish even in a bad sprint. What should fill the rest of the sprint?", options: ["More Must items, to use every hour", "Nothing; leave the time empty", "Should and Could items as stretch work, plus a small buffer", "Bug fixes only"], answer: 2, explain: "Scope is the buffer. Musts are guaranteed because they fit even in a bad case, and Should and Could items are worked as stretch, so the team usually ships extra value without breaking promises. Adding more Musts brings back the risk of missing commitments, and leaving time empty wastes capacity." },
     { q: "An acceptance criterion is:", options: ["a design mock", "a testable condition that shows the story is done", "a sales target", "a vision statement"], answer: 1, explain: "Acceptance criteria are yes-or-no conditions, often written as given, when, then, that must all be true for a user story to count as done. A design mock shows how it looks but does not define done, and sales targets and vision statements sit at a different level." }
   ],
   tasks: [
@@ -76,6 +76,11 @@ Academy.add("A2", "practice", {
   },
   reportBack: "Friday report-back: share your top 3 RICE items and your PRD's non-goals. What did an engineer and a salesperson say when they read your PRD, and what did you change because of it?",
   resources: [
-    "Inspired (Marty Cagan)"
+    "Inspired (Marty Cagan)",
+    "Agile Project Management Professional Certificate, University of Maryland (edX): Applied Scrum and Sprint Planning courses",
+    "Essentialism (Greg McKeown) and The One Thing (Gary Keller and Jay Papasan), on doing less",
+    "Critical Chain (Eliyahu Goldratt), on padding, multitasking and buffers",
+    "FIRE (Dan Ward), the Faster, Better, Cheaper principles behind small, focused projects",
+    "\"The New New Product Development Game\" (Takeuchi and Nonaka, HBR 1986), the origin of Scrum"
   ]
 });

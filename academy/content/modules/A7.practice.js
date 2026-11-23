@@ -74,6 +74,9 @@ Academy.add("A7", "practice", {
   },
   reportBack: "Friday report-back: from the real sales calls you joined, share one implication question that landed, one feature request whose real problem surprised you, and how the buyer reacted.",
   resources: [
-    "SPIN Selling, Neil Rackham"
+    "SPIN Selling, Neil Rackham",
+    "Agile Project Management Professional Certificate, University of Maryland (edX): Agile Leadership Principles and Practices course",
+    "Nudge (Richard Thaler and Cass Sunstein), on designing choices",
+    "Primal Leadership (Daniel Goleman and others), on emotional intelligence and team climate"
   ]
 });

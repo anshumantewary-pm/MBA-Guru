@@ -104,13 +104,13 @@
           <h1>Learn. Lead. <em>Close.</em></h1>
           <p class="sub2">The role-based Sales &amp; Marketing programme for India, built like an MBA course pack: lessons, video, quizzes and real work on your own product.</p>
           <div class="row-gap" style="justify-content:center">
-            <a class="btn-dark" href="${st.role ? "#/role/" + st.role : "#roles"}">${st.role ? "Continue your track" : "Choose your role"} <span aria-hidden="true">→</span></a>
+            <a class="btn-dark" href="${S.signedIn() ? "#/start" : "#/signup"}">${S.signedIn() ? "Continue learning" : "Sign up free"} <span aria-hidden="true">→</span></a>
             <a class="btn-ghost" href="#/programme">See the programme</a>
           </div>
         </div>
         <div class="glassbar" role="list">
           <div role="listitem"><b>37</b><span>Modules</span></div>
-          <div role="listitem"><b>265</b><span>In-depth lessons</span></div>
+          <div role="listitem"><b>268</b><span>In-depth lessons</span></div>
           <div role="listitem"><b>37</b><span>Narrated videos</span></div>
           <div role="listitem"><b>12</b><span>Weeks to mastery</span></div>
         </div>
@@ -168,6 +168,7 @@
               ${C.roles.map((r) => `
                 <a class="role ${st.role === r.id ? "chosen" : ""}" href="#/role/${r.id}" data-role="${r.id}" style="--hue:${r.hue}">
                   <span class="num">${r.numeral}</span>
+                  <span class="role-avs" aria-hidden="true">${window.Avatars.forRole(r.id).map((a) => window.Avatars.svg(a.id, { badge: false })).join("")}</span>
                   <h3><b>Track ${r.letter}</b>${esc(r.name)}</h3>
                   <p>${esc(r.promise)}</p>
                   <p class="who">For ${esc(r.who.toLowerCase())}.</p>
@@ -421,6 +422,7 @@
           <h2>${fmt(l.title)}</h2>
           ${l.summary ? `<p class="summary">${fmt(l.summary)}</p>` : ""}
           ${(l.blocks || []).map(block).join("")}
+          ${l.selfCheck && l.selfCheck.length ? `<div class="selfcheck"><span class="label">Check your understanding</span><ol>${l.selfCheck.map((t) => `<li>${fmt(t)}</li>`).join("")}</ol></div>` : ""}
           ${l.takeaways && l.takeaways.length ? `<div class="takeaways"><span class="label">Key takeaways</span><ul>${l.takeaways.map((t) => `<li>${fmt(t)}</li>`).join("")}</ul></div>` : ""}
           <div class="lesson-actions">
             ${i > 0 ? `<a class="pill" href="#/module/${m.id}/lessons/${i - 1}">← Previous</a>` : `<span></span>`}
@@ -716,6 +718,179 @@
       ${footer()}`;
   }
 
+  /* ---------- signup ---------- */
+  const AV = window.Avatars;
+  const firstName = (n) => String(n || "").trim().split(/\s+/)[0] || "there";
+  const validEmail = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);
+
+  // #/signup[/next]: three steps (details, profession and avatar, what next). `next` is an encoded
+  // hash path the learner was trying to reach before signing up.
+  function signupPage(nextEnc) {
+    const st = S.get();
+    const next = nextEnc ? decodeURIComponent(nextEnc) : "";
+    const editing = S.signedIn();
+    const pre = (next.match(/^role\/(\w+)/) || [])[1];
+    const draft = {
+      name: (st.account && st.account.name) || st.name || "",
+      email: (st.account && st.account.email) || "",
+      org: (st.account && st.account.org) || "",
+      city: (st.account && st.account.city) || "",
+      product: st.product || "",
+      role: roleById[pre] ? pre : st.role,
+      avatar: st.avatar
+    };
+    if (draft.role && AV.roleOf(draft.avatar) !== draft.role) draft.avatar = AV.forRole(draft.role)[0].id;
+    let step = editing ? 2 : 1;
+
+    const stepper = () => `<ol class="stepper" aria-label="Sign-up steps">${["Your details", "Your profession", "What next"]
+      .map((t, k) => `<li class="${k + 1 === step ? "on" : k + 1 < step ? "done" : ""}"><span>${k + 1}</span>${t}</li>`).join("")}</ol>`;
+
+    function stepOne() {
+      return `
+        <form class="card signup-card" data-step1 novalidate>
+          <h3>Create your learner account</h3>
+          <p>Your account and progress are saved in this browser, so nothing leaves your device.</p>
+          <div class="form-grid">
+            <label><span class="label">Full name *</span><input type="text" name="name" autocomplete="name" value="${esc(draft.name)}" placeholder="As it should appear on your certificate" required></label>
+            <label><span class="label">Work email *</span><input type="email" name="email" autocomplete="email" value="${esc(draft.email)}" placeholder="you@company.com" required></label>
+            <label><span class="label">Company or team</span><input type="text" name="org" autocomplete="organization" value="${esc(draft.org)}" placeholder="e.g. Acme Distributors"></label>
+            <label><span class="label">City</span><input type="text" name="city" value="${esc(draft.city)}" placeholder="e.g. Indore"></label>
+            <label class="wide"><span class="label">The real product you will work on</span><input type="text" name="product" value="${esc(draft.product)}" placeholder="e.g. Billing app for kirana stores"></label>
+          </div>
+          <p class="form-error" role="alert" hidden></p>
+          <div class="row-gap mt-m"><button class="pill solid" type="submit">Continue · choose your profession</button></div>
+        </form>`;
+    }
+
+    function stepTwo() {
+      return `
+        <div class="card signup-card">
+          <h3>${editing ? "Your profession and avatar" : `Nice to meet you, ${esc(firstName(draft.name))}. What do you do?`}</h3>
+          <p>Pick the role closest to your job, then pick the avatar that represents you. Your role decides your eight-module track after the shared foundation.</p>
+          <div class="prof-grid">
+            ${C.roles.map((r) => `
+              <section class="prof ${draft.role === r.id ? "on" : ""}" style="--hue:${r.hue}" data-prof="${r.id}">
+                <header><span class="label">Track ${r.letter}</span><h4>${esc(r.name)}</h4><p>${esc(r.who)}</p></header>
+                <div class="av-row" role="radiogroup" aria-label="${esc(r.name)} avatars">
+                  ${AV.forRole(r.id).map((a) => `
+                    <button type="button" class="av-pick ${draft.avatar === a.id ? "on" : ""}" role="radio" aria-checked="${draft.avatar === a.id}" data-av="${a.id}" title="${esc(a.label)}">
+                      ${AV.svg(a.id)}<span>${esc(a.label)}</span>
+                    </button>`).join("")}
+                </div>
+                <p class="metric label">Day-90 metric: <span class="gold">${esc(r.metric)}</span></p>
+              </section>`).join("")}
+          </div>
+          <div class="row-gap mt-m">
+            ${editing ? "" : `<button class="pill" type="button" data-back>← Back</button>`}
+            <button class="pill solid" type="button" data-step2 ${draft.avatar ? "" : "disabled"}>${editing ? "Save changes" : "Create my account"}</button>
+          </div>
+        </div>`;
+    }
+
+    function render() {
+      app.innerHTML = `
+        ${pageHead({
+          crumbs: `<a href="#/">Home</a><span>/</span><span>${editing ? "Profile" : "Sign up"}</span>`,
+          thin: editing ? "Your profile" : "Join the Academy",
+          bold: editing ? "Role and avatar" : "Sign up in a minute",
+          sub: editing ? "Change your profession or avatar. Your progress stays as it is." : "Tell us who you are, pick your profession and an avatar, then choose where to begin.",
+          after: stepper()
+        })}
+        <div class="dusk"><div class="section" style="padding-top:50px"><div class="wrap">${step === 1 ? stepOne() : stepTwo()}</div></div></div>`;
+      bind();
+    }
+
+    function bind() {
+      const f = app.querySelector("[data-step1]");
+      if (f) f.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const v = Object.fromEntries(new FormData(f).entries());
+        Object.keys(v).forEach((k) => (draft[k] = String(v[k]).trim()));
+        const err = !draft.name ? "Please enter your name." : !validEmail(draft.email) ? "Please enter a valid email address." : "";
+        const box = f.querySelector(".form-error");
+        if (err) { box.textContent = err; box.hidden = false; f.querySelector(!draft.name ? "[name=name]" : "[name=email]").focus(); return; }
+        step = 2; render(); window.scrollTo(0, 0);
+      });
+      app.querySelectorAll("[data-av]").forEach((b) => b.addEventListener("click", () => {
+        draft.avatar = b.dataset.av; draft.role = AV.roleOf(b.dataset.av);
+        app.querySelectorAll("[data-av]").forEach((x) => { const on = x === b; x.classList.toggle("on", on); x.setAttribute("aria-checked", String(on)); });
+        app.querySelectorAll("[data-prof]").forEach((x) => x.classList.toggle("on", x.dataset.prof === draft.role));
+        app.querySelector("[data-step2]").disabled = false;
+      }));
+      const back = app.querySelector("[data-back]");
+      if (back) back.addEventListener("click", () => { step = 1; render(); });
+      const done = app.querySelector("[data-step2]");
+      if (done) done.addEventListener("click", () => {
+        if (!draft.avatar) return;
+        S.signUp({ name: draft.name, email: draft.email, org: draft.org, city: draft.city },
+          { role: draft.role, avatar: draft.avatar, product: draft.product || st.product, name: draft.name || st.name });
+        accountChip();
+        toast(editing ? "Profile saved" : `Welcome, ${firstName(draft.name)}`);
+        location.hash = next && !editing ? "#/" + next : "#/start";
+      });
+    }
+    render();
+  }
+
+  // #/start: the hub a learner lands on after signing up, to choose what to do.
+  function startPage() {
+    const st = S.get();
+    const r = roleById[st.role] || C.roles[0];
+    const mods = path(r.id);
+    const next = mods.find((m) => !moduleProgress(m.id).done) || mods[0];
+    const trackFirst = MODS.find((m) => m.track === r.id);
+    const started = mods.some((m) => moduleProgress(m.id).started);
+    const choices = [
+      started
+        ? { href: `#/module/${next.id}`, k: "Continue", t: `Pick up at ${next.id}`, d: next.title }
+        : { href: "#/module/F1", k: "Week 1", t: "Start the programme", d: "Begin with the shared foundation: F1, Know the customer and the market." },
+      { href: `#/module/${trackFirst.id}`, k: `Track ${r.letter}`, t: `Jump into the ${r.short} track`, d: `${trackFirst.id}: ${trackFirst.title}. Best if you already know the basics.` },
+      { href: `#/role/${r.id}`, k: "Your path", t: "See your 12-week path", d: `Foundation, eight ${r.short.toLowerCase()} modules and the capstone, with your progress.` },
+      { href: "#/module/" + next.id + "/video", k: "Watch", t: "Watch a video lesson", d: `A short narrated lesson for ${next.id} to get a feel for the course.` },
+      { href: "#/programme", k: "Browse", t: "Explore every module", d: "All 37 modules across the four roles. Read anything, in any order." },
+      { href: "#/progress", k: "Track", t: "Progress and certificate", d: "Quiz scores, task scores, your playbook export and the certificate." }
+    ];
+    app.innerHTML = `
+      ${pageHead({
+        crumbs: `<a href="#/">Home</a><span>/</span><span>Start</span>`,
+        thin: `Hello, ${esc(firstName(st.account.name))}`,
+        bold: "What would you like to do?",
+        sub: `${esc(AV.label(st.avatar) || r.name)} · ${esc(r.name)} track${st.account.org ? " · " + esc(st.account.org) : ""}`,
+        after: `<div class="me-hero">${AV.svg(st.avatar, { size: 112 })}</div>`
+      })}
+      <div class="dusk"><div class="section" style="padding-top:50px"><div class="wrap">
+        <div class="choice-grid">
+          ${choices.map((c, i) => `<a class="choice reveal ${i === 0 ? "primary" : ""}" href="${c.href}" style="--hue:${r.hue}"><span class="label">${esc(c.k)}</span><h3>${esc(c.t)}</h3><p>${esc(c.d)}</p><span class="go" aria-hidden="true">→</span></a>`).join("")}
+        </div>
+        <div class="row-gap mt-m">
+          <a class="pill small" href="#/signup">Change role or avatar</a>
+          <button class="pill small" data-signout>Sign out</button>
+        </div>
+      </div></div></div>
+      ${footer()}`;
+    app.querySelector("[data-signout]").addEventListener("click", () => {
+      S.signOut(); accountChip(); toast("Signed out. Your progress stays in this browser."); location.hash = "#/";
+    });
+  }
+
+  // Top-bar account chip: a sign-up button, or the learner's avatar and first name.
+  function accountChip() {
+    const a = document.querySelector("[data-account]");
+    if (!a) return;
+    const st = S.get();
+    if (S.signedIn()) {
+      a.className = "me-chip";
+      a.href = "#/start";
+      a.innerHTML = `${AV.svg(st.avatar, { badge: false, size: 30 })}<span>${esc(firstName(st.account.name))}</span>`;
+      a.setAttribute("aria-label", "Your account: " + st.account.name);
+    } else {
+      a.className = "pill small";
+      a.href = "#/signup";
+      a.textContent = "Sign up";
+      a.removeAttribute("aria-label");
+    }
+  }
+
   function notFound() {
     app.innerHTML = `${pageHead({ crumbs: `<a href="#/">Home</a>`, thin: "Lost at sea", bold: "Page not found", sub: "That page doesn't exist.", after: `<a class="pill solid mt-m" href="#/">Back home</a>` })}`;
   }
@@ -734,10 +909,18 @@
       return reveal();
     }
     const [page, a, b, c] = h.split("/");
+    // Track, module, progress and the start hub need an account; send the learner to sign up and back.
+    if (["role", "module", "progress", "start"].includes(page) && !S.signedIn()) {
+      location.replace("#/signup/" + encodeURIComponent(h));
+      return;
+    }
+    accountChip();
     document.querySelectorAll(".nav a").forEach((n) => n.classList.toggle("active", n.getAttribute("href") === "#/" + (page || "")));
     closeMenu();
     document.body.classList.toggle("is-home", !page);
     if (!page) home();
+    else if (page === "signup") signupPage(a);
+    else if (page === "start") startPage();
     else if (page === "role") rolePage(a);
     else if (page === "module") modulePage(a, b, c);
     else if (page === "progress") progressPage();

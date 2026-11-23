@@ -66,6 +66,16 @@ Academy.add("A4", "lessons", {
           ["Cannot repeat it", "Too long or too abstract", "Shorten and use buyer language"]
         ] },
         { type: "callout", tone: "warn", title: "Common mistakes", text: "Cramming several benefits into the statement; naming a rival startup when buyers actually compare you with a spreadsheet or a person; using jargon such as \"end-to-end platform\" that buyers never say; and publishing the statement as an ad line instead of using it as the source for customer-facing copy." },
+        { type: "h", text: "Going deeper: the value hypothesis behind the statement" },
+        { type: "p", text: "The University of Maryland Agile course points out that the strongest companies state their core value in pure business terms, so the *how* can change while the value stays the same. Its examples: Google's \"be one search away from your customers\", Apple's promise of a phone that is simple and magical to use, and Southwest Airlines' \"low fares, nothing to hide\". None of them names a technology. Each one tells product, sales and marketing what to protect and what to say no to." },
+        { type: "p", text: "Before polishing your positioning statement, write your **value hypothesis** in one line: who wants what, in order to do why. Test every message, feature and campaign against it. If a proposed tagline or feature does not serve that line, it is noise, however clever it sounds." },
+        { type: "template", title: "Value hypothesis", lines: [
+          "[Segment] wants [outcome, in business terms] in order to [the deeper why].",
+          "Example: Tier 2 FMCG distributors want to collect retailer credit on time",
+          "         in order to stop borrowing to pay their own suppliers.",
+          "What we will protect at all costs: ________",
+          "What we will say no to because it does not serve this: ________"
+        ] },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "Write your positioning statement using the template. Test it on 5 buyers and record what each says back, word for word. This is practical task 1." }
       ],
       takeaways: [

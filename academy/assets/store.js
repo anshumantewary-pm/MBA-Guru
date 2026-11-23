@@ -3,6 +3,8 @@
 (function () {
   const KEY = "mbaguru.academy.v1";
   const blank = () => ({
+    account: null, // { name, email, org, city, created } once the learner signs up
+    avatar: "",    // e.g. "sales-2", see assets/avatars.js
     name: "",
     product: "",
     role: null,
@@ -62,6 +64,17 @@
 
     setRoleplay(b, v) { state.roleplay[b] = v; save(); },
     setCapstone(c, v) { state.capstone[c] = v; save(); },
+
+    signedIn: () => !!(state.account && state.account.name),
+    signUp(account, extra = {}) {
+      state.account = Object.assign({ created: new Date().toISOString() }, state.account || {}, account);
+      state.name = state.name || account.name;
+      Object.assign(state, extra);
+      if (!state.started) state.started = new Date().toISOString();
+      save();
+    },
+    // Signing out keeps progress in this browser, so signing up again with the same details resumes it.
+    signOut() { state.account = null; save(); },
 
     reset() { state = blank(); save(); },
     export() { return JSON.stringify(state, null, 2); },

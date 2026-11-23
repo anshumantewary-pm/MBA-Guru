@@ -60,6 +60,31 @@ Academy.add("A6", "lessons", {
         { type: "callout", tone: "example", title: "Worked example", text: "Example: a Chennai food-delivery software firm builds a kitchen display feature for restaurants. It soft launches to 25 restaurants in two Chennai neighbourhoods. In week one, kitchen staff struggle with English-only labels and the screen times out during rush hour. The team adds Tamil labels and fixes the timeout. By week three, 18 of 25 restaurants use it daily, above the 60% widen criterion, and the firm extends it to Coimbatore and Madurai before going national." },
         { type: "callout", tone: "warn", title: "Common mistakes", text: "Soft launching with no criteria, so it drifts on for months; choosing only power users who hide real friction; and letting sales promise the feature to all customers during the soft launch." },
         { type: "p", text: "A soft launch is not a delay. It is the cheapest insurance you can buy against a public failure, and it produces the case studies that make the wide launch convincing." },
+        { type: "h", text: "Going deeper: small batches and the cost of a late launch" },
+        { type: "p", text: "A soft launch is a small batch. The Agile course's argument for small batches applies directly: each small release shrinks the gap between what you have decided and what you actually know, makes corrections cheap, and gets value to customers sooner. A big-bang launch locks in months of decisions before the market has said anything." },
+        { type: "p", text: "The opposite risk is waiting too long for a perfect launch. Every week a product is not live has a **cost of delay**: revenue not earned, customers who buy a competitor in the meantime, and a season missed. The course's rule of thumb is to ship the good version while the need is fresh rather than the best version later, then improve it with feedback." },
+        { type: "table", head: ["Question before widening the launch", "Go if", "Hold if"], rows: [
+          [
+            "Did the first segment activate?",
+            "Activation at or above the pass mark",
+            "Most accounts stalled at setup"
+          ],
+          [
+            "Are support tickets under control?",
+            "No P1 issues open, response within SLA",
+            "The team is firefighting daily"
+          ],
+          [
+            "Is sales ready for the next segment?",
+            "Pitch, objections and pricing tested",
+            "Reps cannot explain who it is for"
+          ],
+          [
+            "What does another month of waiting cost?",
+            "Waiting costs more than the risk",
+            "The risk of a bad wider launch costs more"
+          ]
+        ] },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "For your next medium or big release, name the soft-launch segment, write three widen criteria with numbers, and set the first weekly review in the calendar." }
       ],
       takeaways: [

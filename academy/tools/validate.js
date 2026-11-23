@@ -3,7 +3,7 @@
 //        node academy/tools/validate.js F1 A2      (just these)
 const fs=require('fs'),path=require('path');const dir=path.join(__dirname,'..','content','modules');
 const store={};global.Academy={add(id,kind,data){(store[id]=store[id]||{})[kind]=data;}};
-const L=['title','bullets','stat','compare','flow','quote','formula'];const B=['p','h','list','steps','callout','table'];
+const L=['title','bullets','stat','compare','flow','quote','formula'];const B=['p','h','list','steps','callout','table','case','template','dialogue','checklist'];
 let bad=0;const err=(m)=>{bad++;console.log('ERROR',m)};
 global.window={};require(path.join(__dirname,'..','content','modules.js'));
 const ids=process.argv.slice(2).length?process.argv.slice(2):window.CATALOG_MODULES.map(m=>m.id);

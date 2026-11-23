@@ -174,6 +174,8 @@ Bad inputs raise `mbaguru.core.ValidationError` (a `ValueError`) with the argume
 
 The reasoning behind them is in [docs/frameworks.md](docs/frameworks.md): the profitability framework, MECE thinking, break-even, share metrics, pricing, synergies, valuation, unit economics and deciding under uncertainty.
 
+**Course notes.** [docs/courses/agile-project-management-umd.md](docs/courses/agile-project-management-umd.md) is a study guide for the University of Maryland Agile Project Management Professional Certificate on edX. It covers the five courses, the week-by-week outline of *Applied Scrum for Agile Project Management*, Scrum and scaling-framework notes, and a cheat sheet.
+
 ## MBA Guru Academy
 
 [`academy/`](academy/index.html) is a web learning platform for the **Sales & Marketing Mastery** programme: 12 weeks, four roles, 37 modules. A learner picks a role (Product Manager, Sales Manager, Marketing or Digital Marketing). They then work through the shared 4Ps foundation (F1 to F4), their own eight-module track and the capstone.
@@ -212,7 +214,7 @@ src/mbaguru/
 web/               GitHub Pages app that runs the package in the browser (Pyodide)
 academy/           Sales & Marketing Mastery learning platform (lessons, video, quizzes, tasks)
 tests/             one test module per area plus an import-layering check, 498 tests
-docs/              PRD, architecture, frameworks guide, case write-ups
+docs/              PRD, architecture, frameworks guide, case write-ups, course notes
 ```
 
 Layers only import downward (core ← calculators / frameworks ← analysis ← cases / drill ← cli ← web), and a test enforces it. Details: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). Requirements: [docs/PRD.md](docs/PRD.md).

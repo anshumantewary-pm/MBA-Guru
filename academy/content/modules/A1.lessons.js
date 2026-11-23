@@ -2,7 +2,7 @@ Academy.add("A1", "lessons", {
   lessons: [
     {
       title: "Start from customer pain, not a feature idea",
-      minutes: 9,
+      minutes: 14,
       summary: "Why product work begins with a painful, frequent problem you heard from real customers, and how to mine your F1 interviews for it.",
       blocks: [
         { type: "p", text: "Most failed products did not fail because the team could not build them. They failed because nobody needed them badly enough to change what they already do. A feature idea feels like progress because it is concrete: *a dashboard*, *an app*, *an AI assistant*. But a feature is only a guess about how to remove a pain. If the pain is weak, rare or already solved well enough, the cleverest feature will not sell." },
@@ -31,6 +31,25 @@ Academy.add("A1", "lessons", {
           "Treating one loud customer as a market.",
           "Confusing a nice-to-have (\"it would be good if...\") with a must-solve pain."
         ] },
+        { type: "h", text: "Going deeper: ask, don't assume" },
+        { type: "p", text: "PMs who know their market well are often the most confident and the most wrong. Psychologist Nicholas Epley separates **perspective taking** (imagining what someone else thinks) from **perspective getting** (asking them and listening). In his studies, quoted in the University of Maryland Agile course, couples who simply asked each other were roughly twice as accurate at predicting their partner's views as couples who tried to imagine them. If imagining fails between spouses, it will fail between a PM in Bengaluru and a distributor in Nashik." },
+        { type: "case", label: "Case study · from Agile practice", title: "The hotline nobody called", situation: "In Afghanistan in 2011, coalition forces set up a hotline for citizens to report Taliban activity and promoted it with truck loudspeakers and more than $2M of billboards and ads. Almost nobody called.", action: "Officers first assumed people could not identify the Taliban or did not want to report them. When they finally asked residents, they learned the Taliban cut phone lines when they entered towns at night, exactly when people would have called.", result: "Battery-powered mobile towers fixed the problem, and the hotline began producing useful tips.", lesson: "Two million dollars of promotion could not fix a wrong assumption. Fifteen minutes of asking did. Treat every belief about your buyer as a guess until a buyer has confirmed it." },
+        { type: "p", text: "The same applies inside long customer relationships. \"I know this client\" is a reason to keep asking, not to stop. Needs move: a GST rule changes, a new manager arrives, a competitor offers credit. Build a habit of asking two or three existing customers each month what has changed in their work." },
+        { type: "template", title: "Pain sheet row", lines: [
+          "Pain, in the customer's words: \"________________\"",
+          "How many interviews mentioned it unprompted: __ of __",
+          "Last time it happened (date, what happened): ________",
+          "Cost per month (money or hours): ₹______ / ___ hours",
+          "Current workaround and what it costs: ________",
+          "Who feels it (user) and who pays (buyer): ________",
+          "Assumptions we have NOT checked yet: ________"
+        ] },
+        { type: "checklist", title: "A pain worth building for", items: [
+          "At least five customers raised it without being prompted.",
+          "Most can describe a recent, specific incident.",
+          "Someone is already spending money or time on a workaround.",
+          "You confirmed it by asking, not by imagining what they must feel."
+        ] },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "Open your F1 notes and build the pain sheet described above. Bring your top two pains, with how many customers mentioned each and one direct quote, to Tuesday's workshop." }
       ],
       takeaways: [
@@ -38,6 +57,11 @@ Academy.add("A1", "lessons", {
         "Real pains are frequent, costly and already being worked around.",
         "Your F1 interviews are evidence; mine them before running new ones.",
         "Count how many customers share a pain before you trust it."
+      ],
+      selfCheck: [
+        "What is the difference between perspective taking and perspective getting?",
+        "What did the hotline team learn only by asking?",
+        "Which belief about your buyer have you never checked with a buyer?"
       ]
     },
     {
@@ -71,11 +95,16 @@ Academy.add("A1", "lessons", {
         "Today's workaround is your true competitor.",
         "Express cost in rupees, hours or risk, with a source for each figure.",
         "If your product's name appears in the problem, rewrite it."
+      ],
+      selfCheck: [
+        "Name the four parts of a problem statement.",
+        "Why is the workaround your real competitor?",
+        "Spot the solution in disguise: \"Shops lack a smart inventory app.\" Rewrite it."
       ]
     },
     {
       title: "The design thinking loop",
-      minutes: 9,
+      minutes: 15,
       summary: "How to use empathise, define, ideate, prototype and test as a fast, repeatable loop rather than a one-off workshop.",
       blocks: [
         { type: "p", text: "Design thinking is a disciplined way to move from a fuzzy situation to a tested idea. It has five stages, and the power is in running them as a loop: each test teaches you something that sends you back to empathise or define with better information." },
@@ -103,6 +132,43 @@ Academy.add("A1", "lessons", {
           "Testing with colleagues instead of real users."
         ] },
         { type: "callout", tone: "india", title: "Indian context", text: "In many Indian SMBs the decision-maker is not the daily user. The owner pays, but the munim, the store manager or the owner's son does the work. Empathise with both, and test the prototype with the person who will actually touch it." },
+        { type: "h", text: "Going deeper: four rules and the value map" },
+        { type: "p", text: "The Stanford and Hasso Plattner Institute design thinking programmes summarise the approach in four rules. They are a useful check on whether your team is really doing design thinking or just holding workshops." },
+        { type: "table", head: ["Rule", "What it means", "What it looks like in practice"], rows: [
+          [
+            "Humanity",
+            "Design is a social process; do it with others",
+            "PM, engineer, salesperson and a customer in the same room or call"
+          ],
+          [
+            "Ambiguity",
+            "You will not know everything, and that is fine",
+            "Start testing before the research feels complete"
+          ],
+          [
+            "Re-design",
+            "Almost nothing is truly new; you are re-designing for a new context",
+            "Borrow from how customers already work, such as WhatsApp voice notes"
+          ],
+          [
+            "Tangibility",
+            "Make ideas visible with prototypes",
+            "A paper screen or clickable mock in front of a user within days"
+          ]
+        ] },
+        { type: "p", text: "Designers prefer **solution-based** problem solving: put rough candidate solutions in front of users and learn from their reactions, instead of studying the problem forever. A good way to frame each round is a \"How might we...?\" question, such as \"How might we let wholesalers capture voice-note orders without retyping them?\"" },
+        { type: "p", text: "The **value map** links the two sides. On the customer side you list their **jobs**, their **pains** (jobs that are slow, costly or unpleasant) and their **gains** (outcomes they would value). On the product side you list **pain relievers** and **gain creators**. Product-market fit begins where your relievers and creators match the jobs that matter most, ideally by a large margin rather than a small one." },
+        { type: "template", title: "Value map, one page", lines: [
+          "CUSTOMER                         | OUR PRODUCT",
+          "Jobs they are trying to do:      | Products and services we offer:",
+          "  1. ________                    |   ________",
+          "Pains (slow, costly, risky):     | Pain relievers:",
+          "  1. ________                    |   1. ________",
+          "Gains (outcomes they'd value):   | Gain creators:",
+          "  1. ________                    |   1. ________",
+          "Top job we will target: ________ (circle the one that matters most)"
+        ] },
+        { type: "case", label: "Case study · from Agile practice", title: "The users picked the option nobody backed", situation: "In 2015 a team building search for the US National Archives had three candidate designs: a simple Google-style search box (the team's favourite), a detailed form search (the product side's favourite), and tagged, step-by-step search (one developer's idea).", action: "Instead of debating, the team prototyped all three and put them in front of archivists.", result: "The archivists chose tagged search, which neither the team nor the product owner had backed, and immediately added requirements: add, remove and sort tags. Narrowing results step by step was how they really worked.", lesson: "Prototypes settle arguments that meetings cannot. Show options, let users choose, and expect to be surprised." },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "Book half a day to observe one customer doing the task your problem statement describes. Write down three things you did not expect. Use them to revise your statement." }
       ],
       takeaways: [
@@ -110,6 +176,11 @@ Academy.add("A1", "lessons", {
         "Ideate comes after define: generate many ideas, then choose.",
         "Prototypes should be cheap and rough so users give honest reactions.",
         "Observe the real user, who is often not the buyer."
+      ],
+      selfCheck: [
+        "Which of the four design thinking rules does your team break most often?",
+        "Write one \"How might we...?\" question for your top pain.",
+        "What did the National Archives team gain by prototyping three options?"
       ]
     },
     {
@@ -144,11 +215,16 @@ Academy.add("A1", "lessons", {
         "Past behaviour, such as money already spent on a workaround, is better.",
         "Commitments of time, reputation or money are strongest.",
         "Always end a discovery call by asking for a concrete commitment."
+      ],
+      selfCheck: [
+        "Why are two hundred \"likely to buy\" replies weaker than five deposits?",
+        "What is the highest rung of evidence you hold today?",
+        "What commitment one rung higher could you ask for this week?"
       ]
     },
     {
       title: "Cheap tests that produce real evidence",
-      minutes: 10,
+      minutes: 15,
       summary: "Six low-cost ways to test demand before building: landing page, WhatsApp catalogue, pre-order, sample batch, concierge MVP and fake-door button.",
       blocks: [
         { type: "p", text: "A cheap test is any experiment that produces evidence from real behaviour at a fraction of the cost of building the product. The goal is to climb the evidence ladder in days, not months. Choose the test that matches your product type and the question you most need answered." },
@@ -177,6 +253,34 @@ Academy.add("A1", "lessons", {
           "Changing the price or offer halfway, which makes the result unreadable.",
           "Counting visits or likes instead of the action that matters: sign-ups, payments, orders."
         ] },
+        { type: "h", text: "Going deeper: Build, Measure, Learn and when to pivot" },
+        { type: "p", text: "Every cheap test is one turn of the **Build-Measure-Learn** loop from Lean Startup: build the smallest thing that can test a hypothesis, measure real behaviour, and learn what to do next. Steve Blank's Customer Development, which Lean Startup grew from, splits early work into **customer discovery** (is the problem real and does the solution fit?) and **customer validation** (will people pay, and can you sell repeatedly?). Most ventures stall at validation and have to go back to discovery." },
+        { type: "p", text: "A **concierge MVP** is especially useful in India: you deliver the service by hand to a few customers before automating anything. A team testing automated payment reminders can send them manually from a shared sheet and WhatsApp Business for two weeks. If customers will not pay for the manual version, software will not save it." },
+        { type: "table", head: ["Pivot type", "What changes", "Example"], rows: [
+          [
+            "Zoom-in",
+            "One feature becomes the whole product",
+            "A billing app's payment-reminder feature becomes the product"
+          ],
+          [
+            "Zoom-out",
+            "The product becomes one feature of something bigger",
+            "Reminders become part of a full collections suite"
+          ],
+          [
+            "Customer segment",
+            "Same product, different buyer",
+            "From kirana stores to FMCG distributors"
+          ],
+          [
+            "Customer need",
+            "Same buyer, different problem",
+            "From stock tracking to credit tracking"
+          ],
+          ["Value capture", "How you charge", "From one-time licence to monthly subscription"],
+          ["Channel", "How you reach buyers", "From field sales to distributor partners"]
+        ] },
+        { type: "callout", tone: "tip", title: "Is it ten times better?", text: "Peter Thiel's first question before scaling is whether the product is roughly 10x better than the alternative on the thing that matters. A small improvement rarely beats the habit of the current workaround. If your test shows only a modest gain, look for a zoom-in or a different segment where the gain is dramatic." },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "Choose one cheap test from the table for your top problem. Write the question it answers, the traffic source and the metric you will count. This becomes practical task 3." }
       ],
       takeaways: [
@@ -184,6 +288,11 @@ Academy.add("A1", "lessons", {
         "Match the test to your product: pre-order for goods, concierge for services.",
         "A fake door measures interest by counting clicks on a feature not yet built.",
         "Traffic and a fixed offer matter as much as the test itself."
+      ],
+      selfCheck: [
+        "How would you run a concierge MVP for your product?",
+        "Which pivot type would you try first if your test fails, and why?",
+        "Is your product 10x better on the thing that matters? How do you know?"
       ]
     },
     {
@@ -217,11 +326,16 @@ Academy.add("A1", "lessons", {
         "\"1% of India\" is not sizing; it skips reach, reason and price.",
         "Take adoption from your own tests wherever possible.",
         "Size city by city and write every assumption down."
+      ],
+      selfCheck: [
+        "Why does top-down sizing tell you so little?",
+        "Which term in your sizing has the weakest source?",
+        "Which lever would you pull if your market came out too small?"
       ]
     },
     {
       title: "Set the pass mark first",
-      minutes: 8,
+      minutes: 12,
       summary: "Why every validation test needs a numeric pass mark written before it starts, and how to choose one.",
       blocks: [
         { type: "p", text: "If you run a test without deciding in advance what counts as success, almost any result can be read as encouraging. Twelve sign-ups becomes \"strong early interest\". One paid pilot becomes \"a lighthouse customer\". This is not dishonesty; it is how human beings protect ideas they care about. A pass mark set before the test removes that temptation." },
@@ -247,6 +361,16 @@ Academy.add("A1", "lessons", {
           ["Below fail line", "Stop", "Return to your pain sheet and pick another problem"]
         ] },
         { type: "callout", tone: "warn", title: "Common mistake", text: "Moving the pass mark after seeing results. If you discover the pass mark was unrealistic, note it, set a new one and run a fresh test. Never relabel the old result." },
+        { type: "h", text: "Going deeper: plan to restart, and get stronger each time" },
+        { type: "p", text: "The Agile course cites Standish Group CHAOS data suggesting that 94 of 100 projects restart at least once. Restarting is normal. What matters is whether each failed test leaves you with a sharper objective. The course calls this the anti-fragile approach: small, cheap tests, so that each failure costs little and teaches a lot." },
+        { type: "case", label: "Case study", title: "Three fails, one clear pass", situation: "An illustrative Indore team tested a ₹999-a-month booking tool for physiotherapy clinics with a pass line of 8 paid pilots from 60 demos.", action: "Test 1 got 2 pilots (fail). Calls showed clinics cared about no-shows, not bookings. Test 2 offered no-show reminders and got 5 (fail, but closer). Test 3 targeted multi-therapist clinics only, where no-shows cost most, with the same pass line.", result: "Test 3 produced 11 paid pilots from 55 demos. Each failure was cheap, each set a sharper target, and the final product was narrower and stronger than the original idea.", lesson: "Write the pass mark before every test, keep tests small, and treat each fail as a better-aimed next test." },
+        { type: "template", title: "Test card", lines: [
+          "We believe ________ (segment) will ________ (behaviour) because ________.",
+          "Test: ________   Traffic source: ________   Time limit: ___ days",
+          "PASS if ≥ ___ out of ___      FAIL if < ___ out of ___",
+          "If pass, we will ________.   If fail, we will ________.",
+          "Written on ________, before the test started. Signed: ________"
+        ] },
         { type: "callout", tone: "tip", title: "Apply it this week", text: "Before you start practical task 3, write your pass line, fail line, time limit and decision rule in one sentence. Post it to your cohort channel. Report the result against it on Friday." }
       ],
       takeaways: [
@@ -254,6 +378,56 @@ Academy.add("A1", "lessons", {
         "A pass mark has a number, a denominator and a time limit.",
         "Use a pass line and a fail line; the middle means change and retest.",
         "Link each result to a decision: build, change or stop."
+      ],
+      selfCheck: [
+        "Why must the pass mark be written before the test?",
+        "What makes a failure \"anti-fragile\" rather than wasted?",
+        "Write the decision rule for your next test in one sentence."
+      ]
+    },
+    {
+      title: "Capability ROI: change the buyer's system, not just ship scope",
+      minutes: 14,
+      summary: "Why a product only creates value when it changes what the buyer can do, how to estimate capability ROI in rupees, and how finding the buyer's bottleneck tells you where to aim.",
+      blocks: [
+        { type: "p", text: "A team can ship exactly what was specified and still deliver nothing. If the buyer's business has moved on, or the feature does not touch what limits their results, the project was pure cost. The University of Maryland Agile course puts it bluntly: **the project and its deliverables are cost; value appears only when the buyer's system changes**. The test of your product is not \"did we ship it?\" but \"what can the buyer now do that they could not do before, and what is it worth?\"" },
+        { type: "h", text: "Capability ROI in plain terms" },
+        { type: "p", text: "Think of the buyer's business as a process with a **throughput** (what it delivers: orders, patients served, revenue) and an **operating cost** (what it takes to deliver that). Your product is worth buying if it raises throughput, lowers cost, or both, by more than it costs to buy and run." },
+        { type: "callout", tone: "example", title: "The formula", text: "**Capability ROI ≈ [(new throughput − new cost) − (old throughput − old cost)] ÷ total cost of the product.** Put every figure on the same yearly basis, and include the product's running costs (subscription, training, staff time) in the new cost." },
+        { type: "table", head: ["Line (per year)", "Before", "After"], rows: [
+          ["Throughput: gross margin on orders", "₹48,00,000", "₹55,20,000 (fewer lost orders)"],
+          ["Operating cost: billing staff and errors", "₹9,60,000", "₹6,00,000"],
+          ["Product cost: subscription and training", "–", "₹1,20,000"],
+          ["Net (throughput − cost)", "₹38,40,000", "₹48,00,000"],
+          ["Capability ROI", "", "(₹48,00,000 − ₹38,40,000) ÷ ₹1,20,000 = **8x**"]
+        ] },
+        { type: "p", text: "This is an illustrative distributor. The numbers will be rough, and that is fine. Doing the sum forces two useful questions: which line does our product really move, and how do we know? It also gives sales a rupee story to tell, which matters in a price-sensitive market." },
+        { type: "h", text: "Find the bottleneck first" },
+        { type: "p", text: "Eliyahu Goldratt's **Theory of Constraints** says almost every system is limited by one bottleneck. Speeding up any other step does not raise output; it just piles up work in front of the bottleneck. Signs of a bottleneck: it runs at full capacity, it breaks down often, and it has the biggest queue in front of it. For a product, this means the most valuable feature is the one that relieves the buyer's bottleneck, even if it is not the most impressive one." },
+        { type: "steps", items: [
+          "**Identify** the constraint. Walk the buyer's process and ask where work waits longest. Talking to the people who do the work often reveals it faster than data.",
+          "**Exploit** it. Get the most out of the bottleneck as it is: remove idle time, rework and interruptions.",
+          "**Subordinate** everything else. Other steps should work at the bottleneck's pace, not their own maximum.",
+          "**Elevate** it. Add capacity, often with your product, where the constraint sits.",
+          "**Repeat.** Once relieved, the bottleneck moves. Find the new one, and do not let habit become the constraint."
+        ] },
+        { type: "case", label: "Case study", title: "The dashboard nobody needed", situation: "An illustrative Ludhiana team built a sales analytics dashboard for hosiery wholesalers. Demos went well, but adoption was weak after a month.", action: "The PM spent two days in three warehouses and mapped where orders waited. The bottleneck was not information but dispatch: orders queued for packing slips that one clerk typed by hand from WhatsApp messages.", result: "The team shipped a simple feature that turned WhatsApp orders into packing slips. Dispatch time fell from about two days to same day, and customers began paying for the product. The dashboard became a secondary feature.", lesson: "Value lives at the buyer's bottleneck. Find it before deciding what to build." },
+        { type: "h", text: "Value is temporary" },
+        { type: "p", text: "Every capability has a shelf life. The course's example is car ownership in big cities: when ride-hailing and home delivery arrived, owning a car stopped paying off for many buyers, even though car prices had not changed. The threat came from outside the car industry. For PMs this argues for shipping a good product while the need is fresh rather than a perfect one later, and for re-checking the value case every few months." },
+        { type: "callout", tone: "warn", title: "The biggest risk is adoption", text: "The course names user adoption as the single biggest project risk: if users will not change how they work, nothing else can save the product. Build adoption into the value case: who must change a habit, and what will make that easy?" },
+        { type: "callout", tone: "tip", title: "Apply it this week", text: "For one target customer, fill in the before-and-after table with your best estimates and a source for each line. Then walk their process for an hour and name the step where work waits longest. Check that your MVP moves that step." }
+      ],
+      takeaways: [
+        "Shipping scope is cost; value appears only when the buyer's system changes.",
+        "Capability ROI compares throughput minus cost, before and after, divided by the product's total cost.",
+        "Find the buyer's bottleneck: improving any other step only piles up work.",
+        "Value is temporary, and threats often come from outside your industry.",
+        "User adoption is the biggest risk; design for the habit change."
+      ],
+      selfCheck: [
+        "Which line of your buyer's numbers does your product really move?",
+        "What are the three signs of a bottleneck?",
+        "Why can a perfectly delivered project create zero value?"
       ]
     }
   ]

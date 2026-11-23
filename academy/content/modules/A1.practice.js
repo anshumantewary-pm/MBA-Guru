@@ -78,6 +78,11 @@ Academy.add("A1", "practice", {
   resources: [
     "The Lean Startup (Eric Ries)",
     "Y Combinator's free videos on finding and validating problems",
-    "Your own F1 interview notes, reused as the first evidence base"
+    "Your own F1 interview notes, reused as the first evidence base",
+    "Agile Project Management Professional Certificate, University of Maryland (edX): Agile Innovation and Problem Solving course",
+    "Mindwise (Nicholas Epley), on why asking beats imagining what others think",
+    "The Four Steps to the Epiphany (Steve Blank), the original Customer Development method",
+    "The Goal (Eliyahu Goldratt), a novel that teaches bottlenecks and the Theory of Constraints",
+    "Value Proposition Design (Osterwalder and others), for the value map"
   ]
 });
